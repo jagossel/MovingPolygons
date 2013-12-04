@@ -101,7 +101,7 @@ public class MovingPolygonsService extends WallpaperService {
 			if (!this.screenVisible)
 				return;
 
-			handler.postDelayed(this.serviceRunner, 50);
+			handler.postDelayed(this.serviceRunner, 10);
 		}
 
 		private void createPolygonManager() {
