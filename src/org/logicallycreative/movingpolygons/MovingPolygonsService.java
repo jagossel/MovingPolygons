@@ -16,7 +16,9 @@
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 package org.logicallycreative.movingpolygons;
 
+import org.logicallycreative.movingpolygons.exceptions.MinimumIntegerLargerThanMaximumIntegerException;
 import org.logicallycreative.movingpolygons.managers.PolygonManager;
+import org.logicallycreative.movingpolygons.util.RandomNumberUtility;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -114,9 +116,16 @@ public class MovingPolygonsService extends WallpaperService {
 			if (this.polygonManager != null)
 				return;
 
-			// TODO: For now, just use a triangle.
-			polygonManager = new PolygonManager(3, this.screenWidth,
-					this.screenHeight);
+			int numberOfSides = 0;
+			try {
+				numberOfSides = RandomNumberUtility.getRandomInteger(3, 8);
+			} catch (MinimumIntegerLargerThanMaximumIntegerException rangeEx) {
+				numberOfSides = 5;
+			}
+
+			// TODO: Re-factor to allow for echos to be added...
+			polygonManager = new PolygonManager(numberOfSides,
+					this.screenWidth, this.screenHeight);
 		}
 	}
 }
