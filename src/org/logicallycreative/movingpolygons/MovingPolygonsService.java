@@ -17,7 +17,8 @@
 package org.logicallycreative.movingpolygons;
 
 import org.logicallycreative.movingpolygons.exceptions.MinimumIntegerLargerThanMaximumIntegerException;
-import org.logicallycreative.movingpolygons.managers.PolygonManager;
+import org.logicallycreative.movingpolygons.managers.drawing.DrawingManagable;
+import org.logicallycreative.movingpolygons.managers.drawing.PolygonManager;
 import org.logicallycreative.movingpolygons.util.RandomNumberUtility;
 
 import android.graphics.Canvas;
@@ -47,7 +48,7 @@ public class MovingPolygonsService extends WallpaperService {
 		private int screenWidth;
 		private int screenHeight;
 		private boolean screenVisible = true;
-		private PolygonManager polygonManager;
+		private DrawingManagable drawingManager;
 
 		@Override
 		public void onVisibilityChanged(boolean visible) {
@@ -88,8 +89,8 @@ public class MovingPolygonsService extends WallpaperService {
 				canvas.save();
 				canvas.drawColor(Color.argb(255, 0, 0, 0));
 
-				this.polygonManager.movePoints();
-				this.polygonManager.drawPolygon(canvas);
+				this.drawingManager.movePoints();
+				this.drawingManager.drawPoints(canvas);
 
 				canvas.restore();
 			} finally {
@@ -113,18 +114,13 @@ public class MovingPolygonsService extends WallpaperService {
 			this.screenWidth = metrics.widthPixels;
 			this.screenHeight = metrics.heightPixels;
 
-			if (this.polygonManager != null)
+			if (this.drawingManager != null)
 				return;
 
-			int numberOfSides = 0;
-			try {
-				numberOfSides = RandomNumberUtility.getRandomInteger(3, 8);
-			} catch (MinimumIntegerLargerThanMaximumIntegerException rangeEx) {
-				numberOfSides = 5;
-			}
+			int numberOfSides = RandomNumberUtility.getRandomInteger(3, 8, 5);
 
-			// TODO: Re-factor to allow for echos to be added...
-			polygonManager = new PolygonManager(numberOfSides,
+			// TODO: Create the EchoesManager class, and replace the PolygonManager with it.
+			this.drawingManager = new PolygonManager(numberOfSides,
 					this.screenWidth, this.screenHeight);
 		}
 	}

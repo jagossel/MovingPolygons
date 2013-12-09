@@ -14,20 +14,11 @@
 // You should have received a copy of the GNU General Public License along
 // with this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-package org.logicallycreative.movingpolygons.util;
+package org.logicallycreative.movingpolygons.managers.drawing;
 
-import org.logicallycreative.movingpolygons.exceptions.MinimumIntegerLargerThanMaximumIntegerException;
+import android.graphics.Canvas;
 
-public class RandomNumberUtility {
-	public static int getRandomInteger(int minimumInteger, int maximumInteger, int defaultInteger) {
-		if (minimumInteger > maximumInteger)
-			return defaultInteger;
-
-		int range = maximumInteger - minimumInteger;
-		double randomDecimal = Math.random();
-		int randomInteger = (int) (randomDecimal * range);
-		int randomNumber = randomInteger + minimumInteger;
-
-		return randomNumber;
-	}
+public interface DrawingManagable {
+	void movePoints();
+	void drawPoints(Canvas canvas);
 }

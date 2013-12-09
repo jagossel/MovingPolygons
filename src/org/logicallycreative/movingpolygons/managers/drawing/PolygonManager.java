@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License along
 // with this program; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-package org.logicallycreative.movingpolygons.managers;
+package org.logicallycreative.movingpolygons.managers.drawing;
 
 import java.util.List;
 
@@ -28,34 +28,31 @@ import android.graphics.Paint;
 import android.graphics.Paint.Cap;
 import android.util.Log;
 
-public class PolygonManager {
+public class PolygonManager implements DrawingManagable {
 	private final Polygon polygon = new Polygon();
 	private final Paint tempPaint = new Paint();
 
 	private final int screenWidth;
 	private final int screenHeight;
 
-	public PolygonManager(int numerOfSides, int width, int height) {
+	public PolygonManager(int numberOfSides, int width, int height) {
 		this.screenWidth = width;
 		this.screenHeight = height;
+		
+		createPoints(numberOfSides);
+		createPaint();
+	}
+	
+	private void createPoints(int numberOfSides) {
+		for (int i = 0; i < numberOfSides; i++) {
+			int randomXCoordinate = RandomNumberUtility.getRandomInteger(0, this.screenWidth, 0);
+			int randomYCoordinate = RandomNumberUtility.getRandomInteger(0, this.screenHeight, 0);
 
-		for (int i = 0; i < numerOfSides; i++) {
-			try {
-				int randomXCoordinate = RandomNumberUtility.getRandomInteger(0,
-						this.screenWidth);
-				int randomYCoordinate = RandomNumberUtility.getRandomInteger(0,
-						this.screenHeight);
-
-				DeltaPoint newPoint = new DeltaPoint(randomXCoordinate,
-						randomYCoordinate, 1, 1);
-
-				this.polygon.addPoint(newPoint);
-			} catch (MinimumIntegerLargerThanMaximumIntegerException rangeEx) {
-				Log.e("LogicallyCreativeOrg_MovingPolygons",
-						rangeEx.getMessage());
-			}
+			this.polygon.addPoint(new DeltaPoint(randomXCoordinate, randomYCoordinate, 1, 1));
 		}
-
+	}
+	
+	private void createPaint() {
 		// TODO: For now, use a simple white line.
 		this.tempPaint.setARGB(255, 255, 255, 255);
 		this.tempPaint.setAntiAlias(true);
@@ -65,9 +62,7 @@ public class PolygonManager {
 
 	public void movePoints() {
 		List<DeltaPoint> points = this.polygon.getPoints();
-		for (int i = 0; i < points.size(); i++) {
-			DeltaPoint point = points.get(i);
-
+		for (DeltaPoint point : points) {
 			int currentX = point.getXCoordinate();
 			int currentY = point.getYCoordinate();
 			int deltaX = point.getDeltaX();
@@ -95,7 +90,7 @@ public class PolygonManager {
 		}
 	}
 
-	public void drawPolygon(Canvas canvas) {
+	public void drawPoints(Canvas canvas) {
 		List<DeltaPoint> points = this.polygon.getPoints();
 		int pointsCount = points.size();
 
