@@ -21,7 +21,7 @@ import java.util.List;
 
 import org.logicallycreative.movingpolygons.data.DeltaPoint;
 import org.logicallycreative.movingpolygons.managers.drawing.DrawingManagable;
-import org.logicallycreative.movingpolygons.managers.drawing.PolygonManager;
+import org.logicallycreative.movingpolygons.managers.drawing.EchoManager;
 import org.logicallycreative.movingpolygons.util.RandomNumberUtility;
 
 import android.graphics.Canvas;
@@ -121,9 +121,10 @@ public class MovingPolygonsService extends WallpaperService {
 				return;
 
 			List<DeltaPoint> startingPoints = createStartingPoints();
+			int numberOfEchoes = RandomNumberUtility.getRandomInteger(3, 10, 5);
+			int spacing = RandomNumberUtility.getRandomInteger(5, 10, 5);
 			
-			// TODO: Create the EchoesManager class, and replace the PolygonManager with it.
-			drawingManager = new PolygonManager(screenWidth, screenHeight);			
+			drawingManager = new EchoManager(screenWidth, screenHeight, numberOfEchoes, spacing);
 			drawingManager.addPoints(startingPoints);
 		}
 		
