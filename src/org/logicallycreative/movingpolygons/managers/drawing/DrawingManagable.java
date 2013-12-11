@@ -16,9 +16,14 @@
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 package org.logicallycreative.movingpolygons.managers.drawing;
 
+import java.util.List;
+
+import org.logicallycreative.movingpolygons.data.DeltaPoint;
+
 import android.graphics.Canvas;
 
 public interface DrawingManagable {
+	void addPoints(List<DeltaPoint> points);
 	void movePoints();
 	void drawPoints(Canvas canvas);
 }

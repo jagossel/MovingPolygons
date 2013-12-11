@@ -16,6 +16,10 @@
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 package org.logicallycreative.movingpolygons;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.logicallycreative.movingpolygons.data.DeltaPoint;
 import org.logicallycreative.movingpolygons.managers.drawing.DrawingManagable;
 import org.logicallycreative.movingpolygons.managers.drawing.PolygonManager;
 import org.logicallycreative.movingpolygons.util.RandomNumberUtility;
@@ -116,10 +120,25 @@ public class MovingPolygonsService extends WallpaperService {
 			if (drawingManager != null)
 				return;
 
-			int numberOfSides = RandomNumberUtility.getRandomInteger(3, 8, 5);
-
+			List<DeltaPoint> startingPoints = createStartingPoints();
+			
 			// TODO: Create the EchoesManager class, and replace the PolygonManager with it.
-			drawingManager = new PolygonManager(numberOfSides, screenWidth, screenHeight);
+			drawingManager = new PolygonManager(screenWidth, screenHeight);			
+			drawingManager.addPoints(startingPoints);
+		}
+		
+		private List<DeltaPoint> createStartingPoints() {
+			List<DeltaPoint> startingPoints = new ArrayList<DeltaPoint>();
+			
+			int numberOfSides = RandomNumberUtility.getRandomInteger(3, 8, 5);
+			for (int i = 0; i < numberOfSides; i++) {
+				int xCoordinate = RandomNumberUtility.getRandomInteger(0, screenWidth, 0);
+				int yCoordinate = RandomNumberUtility.getRandomInteger(0, screenHeight, 0);
+				
+				startingPoints.add(new DeltaPoint(xCoordinate, yCoordinate, 1, 1));
+			}
+			
+			return startingPoints;
 		}
 	}
 }

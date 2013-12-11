@@ -33,22 +33,12 @@ public class PolygonManager implements DrawingManagable {
 
 	private final int screenWidth;
 	private final int screenHeight;
-
-	public PolygonManager(int numberOfSides, int width, int height) {
+	
+	public PolygonManager(int width, int height) {
 		screenWidth = width;
 		screenHeight = height;
 		
-		createPoints(numberOfSides);
 		createPaint();
-	}
-	
-	private void createPoints(int numberOfSides) {
-		for (int i = 0; i < numberOfSides; i++) {
-			int randomXCoordinate = RandomNumberUtility.getRandomInteger(0, screenWidth, 0);
-			int randomYCoordinate = RandomNumberUtility.getRandomInteger(0, screenHeight, 0);
-
-			polygon.addPoint(new DeltaPoint(randomXCoordinate, randomYCoordinate, 1, 1));
-		}
 	}
 	
 	private void createPaint() {
@@ -57,6 +47,11 @@ public class PolygonManager implements DrawingManagable {
 		tempPaint.setAntiAlias(true);
 		tempPaint.setStrokeCap(Cap.SQUARE);
 		tempPaint.setStrokeWidth(1);
+		}
+
+	public void addPoints(List<DeltaPoint> points) {
+		for (DeltaPoint point : points)
+			polygon.addPoint(point);
 	}
 
 	public void movePoints() {
