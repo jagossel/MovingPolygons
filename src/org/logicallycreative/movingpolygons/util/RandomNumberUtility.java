@@ -16,8 +16,6 @@
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 package org.logicallycreative.movingpolygons.util;
 
-import org.logicallycreative.movingpolygons.exceptions.MinimumIntegerLargerThanMaximumIntegerException;
-
 public class RandomNumberUtility {
 	public static int getRandomInteger(int minimumInteger, int maximumInteger, int defaultInteger) {
 		if (minimumInteger > maximumInteger)

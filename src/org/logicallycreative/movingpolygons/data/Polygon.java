@@ -23,10 +23,10 @@ public class Polygon {
 	private final List<DeltaPoint> points = new ArrayList<DeltaPoint>();
 
 	public void addPoint(DeltaPoint newPoint) {
-		this.points.add(newPoint);
+		points.add(newPoint);
 	}
 
 	public List<DeltaPoint> getPoints() {
-		return this.points;
+		return points;
 	}
 }

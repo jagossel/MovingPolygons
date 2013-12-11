@@ -16,7 +16,6 @@
 // 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 package org.logicallycreative.movingpolygons;
 
-import org.logicallycreative.movingpolygons.exceptions.MinimumIntegerLargerThanMaximumIntegerException;
 import org.logicallycreative.movingpolygons.managers.drawing.DrawingManagable;
 import org.logicallycreative.movingpolygons.managers.drawing.PolygonManager;
 import org.logicallycreative.movingpolygons.util.RandomNumberUtility;
@@ -47,16 +46,16 @@ public class MovingPolygonsService extends WallpaperService {
 
 		private int screenWidth;
 		private int screenHeight;
-		private boolean screenVisible = true;
+		private boolean screenVisible;
 		private DrawingManagable drawingManager;
 
 		@Override
 		public void onVisibilityChanged(boolean visible) {
-			this.screenVisible = visible;
-			if (this.screenVisible) {
-				this.handler.post(this.serviceRunner);
+			screenVisible = visible;
+			if (screenVisible) {
+				handler.post(serviceRunner);
 			} else {
-				this.handler.removeCallbacks(this.serviceRunner);
+				handler.removeCallbacks(serviceRunner);
 			}
 		}
 
@@ -69,8 +68,8 @@ public class MovingPolygonsService extends WallpaperService {
 		@Override
 		public void onSurfaceDestroyed(SurfaceHolder surface) {
 			super.onSurfaceDestroyed(surface);
-			this.screenVisible = false;
-			this.handler.removeCallbacks(this.serviceRunner);
+			screenVisible = false;
+			handler.removeCallbacks(serviceRunner);
 		}
 
 		@Override
@@ -81,7 +80,7 @@ public class MovingPolygonsService extends WallpaperService {
 		}
 
 		private void drawFrame() {
-			SurfaceHolder surface = this.getSurfaceHolder();
+			SurfaceHolder surface = getSurfaceHolder();
 			Canvas canvas = null;
 
 			try {
@@ -89,8 +88,8 @@ public class MovingPolygonsService extends WallpaperService {
 				canvas.save();
 				canvas.drawColor(Color.argb(255, 0, 0, 0));
 
-				this.drawingManager.movePoints();
-				this.drawingManager.drawPoints(canvas);
+				drawingManager.movePoints();
+				drawingManager.drawPoints(canvas);
 
 				canvas.restore();
 			} finally {
@@ -98,11 +97,11 @@ public class MovingPolygonsService extends WallpaperService {
 					surface.unlockCanvasAndPost(canvas);
 			}
 
-			this.handler.removeCallbacks(this.serviceRunner);
-			if (!this.screenVisible)
+			handler.removeCallbacks(this.serviceRunner);
+			if (!screenVisible)
 				return;
 
-			handler.postDelayed(this.serviceRunner, 10);
+			handler.postDelayed(serviceRunner, 10);
 		}
 
 		private void createPolygonManager() {
@@ -111,17 +110,16 @@ public class MovingPolygonsService extends WallpaperService {
 					.getDefaultDisplay();
 
 			display.getMetrics(metrics);
-			this.screenWidth = metrics.widthPixels;
-			this.screenHeight = metrics.heightPixels;
+			screenWidth = metrics.widthPixels;
+			screenHeight = metrics.heightPixels;
 
-			if (this.drawingManager != null)
+			if (drawingManager != null)
 				return;
 
 			int numberOfSides = RandomNumberUtility.getRandomInteger(3, 8, 5);
 
 			// TODO: Create the EchoesManager class, and replace the PolygonManager with it.
-			this.drawingManager = new PolygonManager(numberOfSides,
-					this.screenWidth, this.screenHeight);
+			drawingManager = new PolygonManager(numberOfSides, screenWidth, screenHeight);
 		}
 	}
 }

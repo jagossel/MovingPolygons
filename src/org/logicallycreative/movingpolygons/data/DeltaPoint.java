@@ -24,38 +24,38 @@ public class DeltaPoint {
 
 	public DeltaPoint(int startingXCoordinate, int startingYCoordinate,
 			int startingDeltaX, int startingDeltaY) {
-		this.xCoordinate = startingXCoordinate;
-		this.yCoordinate = startingYCoordinate;
-		this.deltaX = startingDeltaX;
-		this.deltaY = startingDeltaY;
+		xCoordinate = startingXCoordinate;
+		yCoordinate = startingYCoordinate;
+		deltaX = startingDeltaX;
+		deltaY = startingDeltaY;
 	}
 
 	public int getXCoordinate() {
-		return this.xCoordinate;
+		return xCoordinate;
 	}
 
 	public int getYCoordinate() {
-		return this.yCoordinate;
+		return yCoordinate;
 	}
 
 	public int getDeltaX() {
-		return this.deltaX;
+		return deltaX;
 	}
 
 	public int getDeltaY() {
-		return this.deltaY;
+		return deltaY;
 	}
 
 	public void setCoordinates(int newXCoordinate, int newYCoordinate) {
-		this.xCoordinate = newXCoordinate;
-		this.yCoordinate = newYCoordinate;
+		xCoordinate = newXCoordinate;
+		yCoordinate = newYCoordinate;
 	}
 
 	public void changeDeltaXDirection() {
-		this.deltaX *= -1;
+		deltaX *= -1;
 	}
 
 	public void changeDeltaYDirection() {
-		this.deltaY *= -1;
+		deltaY *= -1;
 	}
 }

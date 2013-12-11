@@ -20,7 +20,6 @@ import java.util.List;
 
 import org.logicallycreative.movingpolygons.data.DeltaPoint;
 import org.logicallycreative.movingpolygons.data.Polygon;
-import org.logicallycreative.movingpolygons.exceptions.MinimumIntegerLargerThanMaximumIntegerException;
 import org.logicallycreative.movingpolygons.util.RandomNumberUtility;
 
 import android.graphics.Canvas;
@@ -36,8 +35,8 @@ public class PolygonManager implements DrawingManagable {
 	private final int screenHeight;
 
 	public PolygonManager(int numberOfSides, int width, int height) {
-		this.screenWidth = width;
-		this.screenHeight = height;
+		screenWidth = width;
+		screenHeight = height;
 		
 		createPoints(numberOfSides);
 		createPaint();
@@ -45,23 +44,23 @@ public class PolygonManager implements DrawingManagable {
 	
 	private void createPoints(int numberOfSides) {
 		for (int i = 0; i < numberOfSides; i++) {
-			int randomXCoordinate = RandomNumberUtility.getRandomInteger(0, this.screenWidth, 0);
-			int randomYCoordinate = RandomNumberUtility.getRandomInteger(0, this.screenHeight, 0);
+			int randomXCoordinate = RandomNumberUtility.getRandomInteger(0, screenWidth, 0);
+			int randomYCoordinate = RandomNumberUtility.getRandomInteger(0, screenHeight, 0);
 
-			this.polygon.addPoint(new DeltaPoint(randomXCoordinate, randomYCoordinate, 1, 1));
+			polygon.addPoint(new DeltaPoint(randomXCoordinate, randomYCoordinate, 1, 1));
 		}
 	}
 	
 	private void createPaint() {
 		// TODO: For now, use a simple white line.
-		this.tempPaint.setARGB(255, 255, 255, 255);
-		this.tempPaint.setAntiAlias(true);
-		this.tempPaint.setStrokeCap(Cap.SQUARE);
-		this.tempPaint.setStrokeWidth(1);
+		tempPaint.setARGB(255, 255, 255, 255);
+		tempPaint.setAntiAlias(true);
+		tempPaint.setStrokeCap(Cap.SQUARE);
+		tempPaint.setStrokeWidth(1);
 	}
 
 	public void movePoints() {
-		List<DeltaPoint> points = this.polygon.getPoints();
+		List<DeltaPoint> points = polygon.getPoints();
 		for (DeltaPoint point : points) {
 			int currentX = point.getXCoordinate();
 			int currentY = point.getYCoordinate();
@@ -69,8 +68,8 @@ public class PolygonManager implements DrawingManagable {
 			int deltaY = point.getDeltaY();
 
 			int newX = currentX + deltaX;
-			if (newX > this.screenWidth) {
-				newX = this.screenWidth;
+			if (newX > screenWidth) {
+				newX = screenWidth;
 				point.changeDeltaXDirection();
 			} else if (newX < 0) {
 				newX = 0;
@@ -78,8 +77,8 @@ public class PolygonManager implements DrawingManagable {
 			}
 
 			int newY = currentY + deltaY;
-			if (newY > this.screenHeight) {
-				newY = this.screenHeight;
+			if (newY > screenHeight) {
+				newY = screenHeight;
 				point.changeDeltaYDirection();
 			} else if (newY < 0) {
 				newY = 0;
@@ -91,7 +90,7 @@ public class PolygonManager implements DrawingManagable {
 	}
 
 	public void drawPoints(Canvas canvas) {
-		List<DeltaPoint> points = this.polygon.getPoints();
+		List<DeltaPoint> points = polygon.getPoints();
 		int pointsCount = points.size();
 
 		for (int i = 0; i < pointsCount; i++) {
@@ -105,7 +104,7 @@ public class PolygonManager implements DrawingManagable {
 			int endX = endingPoint.getXCoordinate();
 			int endY = endingPoint.getYCoordinate();
 
-			canvas.drawLine(startX, startY, endX, endY, this.tempPaint);
+			canvas.drawLine(startX, startY, endX, endY, tempPaint);
 		}
 	}
 }
