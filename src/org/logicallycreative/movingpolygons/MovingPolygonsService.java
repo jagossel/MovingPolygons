@@ -80,6 +80,9 @@ public class MovingPolygonsService extends WallpaperService {
 		public void onSurfaceChanged(SurfaceHolder surface, int format,
 				int width, int height) {
 			super.onSurfaceChanged(surface, format, width, height);
+			
+			// TODO: Add in logic to keep the polygon, instead creating a new one.
+			// For now, just create a new polygon when changing the surface.
 			createPolygonManager();
 		}
 
@@ -116,9 +119,6 @@ public class MovingPolygonsService extends WallpaperService {
 			display.getMetrics(metrics);
 			screenWidth = metrics.widthPixels;
 			screenHeight = metrics.heightPixels;
-
-			if (drawingManager != null)
-				return;
 
 			List<DeltaPoint> startingPoints = createStartingPoints();
 			int numberOfEchoes = RandomNumberUtility.getRandomInteger(3, 10, 5);
