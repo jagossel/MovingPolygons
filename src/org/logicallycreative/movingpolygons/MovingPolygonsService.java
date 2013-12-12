@@ -20,6 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.logicallycreative.movingpolygons.data.DeltaPoint;
+import org.logicallycreative.movingpolygons.managers.color.ColorManagable;
+import org.logicallycreative.movingpolygons.managers.color.SawtoothColorManager;
 import org.logicallycreative.movingpolygons.managers.drawing.DrawingManagable;
 import org.logicallycreative.movingpolygons.managers.drawing.EchoManager;
 import org.logicallycreative.movingpolygons.util.RandomNumberUtility;
@@ -52,6 +54,7 @@ public class MovingPolygonsService extends WallpaperService {
 		private int screenHeight;
 		private boolean screenVisible;
 		private DrawingManagable drawingManager;
+		private ColorManagable colorManager;
 
 		@Override
 		public void onVisibilityChanged(boolean visible) {
@@ -95,6 +98,7 @@ public class MovingPolygonsService extends WallpaperService {
 				canvas.save();
 				canvas.drawColor(Color.argb(255, 0, 0, 0));
 
+				colorManager.changeColors();
 				drawingManager.movePoints();
 				drawingManager.drawPoints(canvas);
 
@@ -119,12 +123,14 @@ public class MovingPolygonsService extends WallpaperService {
 			display.getMetrics(metrics);
 			screenWidth = metrics.widthPixels;
 			screenHeight = metrics.heightPixels;
+			
+			colorManager = new SawtoothColorManager();
 
 			List<DeltaPoint> startingPoints = createStartingPoints();
 			int numberOfEchoes = RandomNumberUtility.getRandomInteger(3, 10, 5);
 			int spacing = RandomNumberUtility.getRandomInteger(5, 10, 5);
 			
-			drawingManager = new EchoManager(screenWidth, screenHeight, numberOfEchoes, spacing);
+			drawingManager = new EchoManager(screenWidth, screenHeight, numberOfEchoes, spacing, colorManager);
 			drawingManager.addPoints(startingPoints);
 		}
 		

@@ -20,6 +20,7 @@ import java.util.List;
 
 import org.logicallycreative.movingpolygons.data.DeltaPoint;
 import org.logicallycreative.movingpolygons.data.Polygon;
+import org.logicallycreative.movingpolygons.managers.color.ColorManagable;
 import org.logicallycreative.movingpolygons.util.RandomNumberUtility;
 
 import android.graphics.Canvas;
@@ -29,25 +30,16 @@ import android.util.Log;
 
 public class PolygonManager implements DrawingManagable {
 	private final Polygon polygon = new Polygon();
-	private final Paint tempPaint = new Paint();
+	private final ColorManagable colorManager;
 
 	private final int screenWidth;
 	private final int screenHeight;
 	
-	public PolygonManager(int width, int height) {
+	public PolygonManager(int width, int height, ColorManagable lineColorManager) {
 		screenWidth = width;
 		screenHeight = height;
-		
-		createPaint();
+		colorManager = lineColorManager;
 	}
-	
-	private void createPaint() {
-		// TODO: For now, use a simple white line.
-		tempPaint.setARGB(255, 255, 255, 255);
-		tempPaint.setAntiAlias(true);
-		tempPaint.setStrokeCap(Cap.SQUARE);
-		tempPaint.setStrokeWidth(1);
-		}
 
 	public void addPoints(List<DeltaPoint> points) {
 		for (DeltaPoint point : points)
@@ -88,6 +80,7 @@ public class PolygonManager implements DrawingManagable {
 		List<DeltaPoint> points = polygon.getPoints();
 		int pointsCount = points.size();
 
+		Paint linePaint = colorManager.getLinePaint();
 		for (int i = 0; i < pointsCount; i++) {
 			int startIndex = i;
 			DeltaPoint startingPoint = points.get(startIndex);
@@ -99,7 +92,7 @@ public class PolygonManager implements DrawingManagable {
 			int endX = endingPoint.getXCoordinate();
 			int endY = endingPoint.getYCoordinate();
 
-			canvas.drawLine(startX, startY, endX, endY, tempPaint);
+			canvas.drawLine(startX, startY, endX, endY, linePaint);
 		}
 	}
 }
