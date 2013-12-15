@@ -37,7 +37,7 @@ public class SawtoothColorManager implements ColorManagable {
 
 		linePaint.setAntiAlias(true);
 		linePaint.setStrokeCap(Paint.Cap.SQUARE);
-		linePaint.setStrokeWidth(1);
+		linePaint.setStrokeWidth(1.5f);
 	}
 
 	private int pickRandomColorValue() {
