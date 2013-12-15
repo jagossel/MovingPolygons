@@ -19,38 +19,32 @@ import org.logicallycreative.movingpolygons.util.RandomNumberUtility;
 
 import android.graphics.Paint;
 
-public class SawtoothColorManager extends ColorManager {
-	private int redIncrement = 1;
-	private int greenIncrement = 1;
-	private int blueIncrement = 1;
+public abstract class ColorManager implements ColorManagable {
+	protected final Paint linePaint = new Paint();
+	
+	protected int redChannel;
+	protected int greenChannel;
+	protected int blueChannel;
+	
+	public ColorManager() {
+		redChannel = pickRandomColorValue();
+		greenChannel = pickRandomColorValue();
+		blueChannel = pickRandomColorValue();
 
-	@Override
-	public void changeColors() {
-		super.redChannel += redIncrement;
-		if (super.redChannel >= 255) {
-			super.redChannel = 255;
-			redIncrement *= -1;
-		} else if (super.redChannel <= 0) {
-			super.redChannel = 0;
-			redIncrement *= -1;
-		}
-		
-		super.greenChannel += greenIncrement;
-		if (super.greenChannel >= 255) {
-			super.greenChannel = 255;
-			greenIncrement *= -1;
-		} else if (super.greenChannel <= 0) {
-			super.greenChannel = 0;
-			greenIncrement *= -1;
-		}
-		
-		super.blueChannel += blueIncrement;
-		if (super.blueChannel >= 255) {
-			super.blueChannel = 255;
-			blueIncrement *= -1;
-		} else if (super.blueChannel <= 0) {
-			super.blueChannel = 0;
-			blueIncrement *= -1;
-		}
+		linePaint.setAntiAlias(true);
+		linePaint.setStrokeCap(Paint.Cap.SQUARE);
+		linePaint.setStrokeWidth(1.5f);
+	}
+
+	private int pickRandomColorValue() {
+		return RandomNumberUtility.getRandomInteger(0, 255, 255);
+	}
+
+	public abstract void changeColors();
+
+	public final Paint getLinePaint() {
+		linePaint.setARGB(255, redChannel, greenChannel, blueChannel);
+
+		return linePaint;
 	}
 }
