@@ -13,16 +13,19 @@
 //
 //You should have received a copy of the GNU General Public License
 //along with this program.  If not, see <http://www.gnu.org/licenses/>.
-package org.logicallycreative.movingpolygons.managers.drawing;
+package org.logicallycreative.movingpolygons.data.shape;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import org.logicallycreative.movingpolygons.data.shape.DeltaPoint;
+public class Polygon {
+	private final List<DeltaPoint> points = new ArrayList<DeltaPoint>();
 
-import android.graphics.Canvas;
+	public void addPoint(DeltaPoint newPoint) {
+		points.add(newPoint);
+	}
 
-public interface DrawingManagable {
-	void addPoints(List<DeltaPoint> points);
-	void movePoints();
-	void drawPoints(Canvas canvas);
+	public List<DeltaPoint> getPoints() {
+		return points;
+	}
 }

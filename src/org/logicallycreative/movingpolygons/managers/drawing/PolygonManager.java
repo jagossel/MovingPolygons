@@ -17,9 +17,9 @@ package org.logicallycreative.movingpolygons.managers.drawing;
 
 import java.util.List;
 
-import org.logicallycreative.movingpolygons.data.DeltaPoint;
-import org.logicallycreative.movingpolygons.data.Polygon;
-import org.logicallycreative.movingpolygons.managers.color.ColorManagable;
+import org.logicallycreative.movingpolygons.data.engine.EngineData;
+import org.logicallycreative.movingpolygons.data.shape.DeltaPoint;
+import org.logicallycreative.movingpolygons.data.shape.Polygon;
 import org.logicallycreative.movingpolygons.util.RandomNumberUtility;
 
 import android.graphics.Canvas;
@@ -29,16 +29,6 @@ import android.util.Log;
 
 public class PolygonManager implements DrawingManagable {
 	private final Polygon polygon = new Polygon();
-	private final ColorManagable colorManager;
-
-	private final int screenWidth;
-	private final int screenHeight;
-	
-	public PolygonManager(int width, int height, ColorManagable lineColorManager) {
-		screenWidth = width;
-		screenHeight = height;
-		colorManager = lineColorManager;
-	}
 
 	public void addPoints(List<DeltaPoint> points) {
 		for (DeltaPoint point : points)
@@ -54,8 +44,8 @@ public class PolygonManager implements DrawingManagable {
 			int deltaY = point.getDeltaY();
 
 			int newX = currentX + deltaX;
-			if (newX > screenWidth) {
-				newX = screenWidth;
+			if (newX > EngineData.screenWidth) {
+				newX = EngineData.screenWidth;
 				point.changeDeltaXDirection();
 			} else if (newX < 0) {
 				newX = 0;
@@ -63,8 +53,8 @@ public class PolygonManager implements DrawingManagable {
 			}
 
 			int newY = currentY + deltaY;
-			if (newY > screenHeight) {
-				newY = screenHeight;
+			if (newY > EngineData.screenHeight) {
+				newY = EngineData.screenHeight;
 				point.changeDeltaYDirection();
 			} else if (newY < 0) {
 				newY = 0;
@@ -79,7 +69,7 @@ public class PolygonManager implements DrawingManagable {
 		List<DeltaPoint> points = polygon.getPoints();
 		int pointsCount = points.size();
 
-		Paint linePaint = colorManager.getLinePaint();
+		Paint linePaint = EngineData.colorManager.getLinePaint();
 		for (int i = 0; i < pointsCount; i++) {
 			int startIndex = i;
 			DeltaPoint startingPoint = points.get(startIndex);

@@ -13,19 +13,15 @@
 //
 //You should have received a copy of the GNU General Public License
 //along with this program.  If not, see <http://www.gnu.org/licenses/>.
-package org.logicallycreative.movingpolygons.data;
+package org.logicallycreative.movingpolygons.data.engine;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.logicallycreative.movingpolygons.managers.color.ColorManagable;
+import org.logicallycreative.movingpolygons.managers.drawing.DrawingManagable;
 
-public class Polygon {
-	private final List<DeltaPoint> points = new ArrayList<DeltaPoint>();
-
-	public void addPoint(DeltaPoint newPoint) {
-		points.add(newPoint);
-	}
-
-	public List<DeltaPoint> getPoints() {
-		return points;
-	}
+public class EngineData {
+	public static int screenWidth;
+	public static int screenHeight;
+	
+	public static ColorManagable colorManager;
+	public static DrawingManagable drawingManager;
 }

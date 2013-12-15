@@ -13,7 +13,7 @@
 //
 //You should have received a copy of the GNU General Public License
 //along with this program.  If not, see <http://www.gnu.org/licenses/>.
-package org.logicallycreative.movingpolygons.data;
+package org.logicallycreative.movingpolygons.data.shape;
 
 public class DeltaPoint {
 	private int xCoordinate;
@@ -21,8 +21,7 @@ public class DeltaPoint {
 	private int deltaX;
 	private int deltaY;
 
-	public DeltaPoint(int startingXCoordinate, int startingYCoordinate,
-			int startingDeltaX, int startingDeltaY) {
+	public DeltaPoint(int startingXCoordinate, int startingYCoordinate, int startingDeltaX, int startingDeltaY) {
 		xCoordinate = startingXCoordinate;
 		yCoordinate = startingYCoordinate;
 		deltaX = startingDeltaX;

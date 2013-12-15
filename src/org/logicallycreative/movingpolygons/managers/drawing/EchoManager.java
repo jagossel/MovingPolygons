@@ -18,8 +18,7 @@ package org.logicallycreative.movingpolygons.managers.drawing;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.logicallycreative.movingpolygons.data.DeltaPoint;
-import org.logicallycreative.movingpolygons.managers.color.ColorManagable;
+import org.logicallycreative.movingpolygons.data.shape.DeltaPoint;
 
 import android.graphics.Canvas;
 
@@ -29,11 +28,11 @@ public class EchoManager implements DrawingManagable
 
 	private final int echoSpacing;
 
-	public EchoManager(int width, int height, int numberOfEchoes, int echoSpace, ColorManagable lineColorManager) {
+	public EchoManager(int numberOfEchoes, int echoSpace) {
 		echoSpacing = echoSpace;
 
 		for (int i = 0; i < numberOfEchoes; i++)
-			polygons.add(new PolygonManager(width, height, lineColorManager));
+			polygons.add(new PolygonManager());
 	}
 
 	public void addPoints(List<DeltaPoint> points) {

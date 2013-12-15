@@ -18,10 +18,9 @@ package org.logicallycreative.movingpolygons;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.logicallycreative.movingpolygons.data.DeltaPoint;
-import org.logicallycreative.movingpolygons.managers.color.ColorManagable;
+import org.logicallycreative.movingpolygons.data.engine.EngineData;
+import org.logicallycreative.movingpolygons.data.shape.DeltaPoint;
 import org.logicallycreative.movingpolygons.managers.color.SawtoothColorManager;
-import org.logicallycreative.movingpolygons.managers.drawing.DrawingManagable;
 import org.logicallycreative.movingpolygons.managers.drawing.EchoManager;
 import org.logicallycreative.movingpolygons.util.RandomNumberUtility;
 
@@ -49,11 +48,7 @@ public class MovingPolygonsService extends WallpaperService {
 			}
 		};
 
-		private int screenWidth;
-		private int screenHeight;
 		private boolean screenVisible;
-		private DrawingManagable drawingManager;
-		private ColorManagable colorManager;
 
 		@Override
 		public void onVisibilityChanged(boolean visible) {
@@ -97,9 +92,9 @@ public class MovingPolygonsService extends WallpaperService {
 				canvas.save();
 				canvas.drawColor(Color.argb(255, 0, 0, 0));
 
-				colorManager.changeColors();
-				drawingManager.movePoints();
-				drawingManager.drawPoints(canvas);
+				EngineData.colorManager.changeColors();
+				EngineData.drawingManager.movePoints();
+				EngineData.drawingManager.drawPoints(canvas);
 
 				canvas.restore();
 			} finally {
@@ -116,21 +111,19 @@ public class MovingPolygonsService extends WallpaperService {
 
 		private void createPolygonManager() {
 			DisplayMetrics metrics = new DisplayMetrics();
-			Display display = ((WindowManager) getSystemService(WINDOW_SERVICE))
-					.getDefaultDisplay();
+			Display display = ((WindowManager) getSystemService(WINDOW_SERVICE)).getDefaultDisplay();
 
 			display.getMetrics(metrics);
-			screenWidth = metrics.widthPixels;
-			screenHeight = metrics.heightPixels;
+			EngineData.screenWidth = metrics.widthPixels;
+			EngineData.screenHeight = metrics.heightPixels;
 			
-			colorManager = new SawtoothColorManager();
-
 			List<DeltaPoint> startingPoints = createStartingPoints();
 			int numberOfEchoes = RandomNumberUtility.getRandomInteger(3, 10, 5);
 			int spacing = RandomNumberUtility.getRandomInteger(5, 10, 5);
 			
-			drawingManager = new EchoManager(screenWidth, screenHeight, numberOfEchoes, spacing, colorManager);
-			drawingManager.addPoints(startingPoints);
+			EngineData.colorManager = new SawtoothColorManager();
+			EngineData.drawingManager = new EchoManager(numberOfEchoes, spacing);
+			EngineData.drawingManager.addPoints(startingPoints);
 		}
 		
 		private List<DeltaPoint> createStartingPoints() {
@@ -138,8 +131,8 @@ public class MovingPolygonsService extends WallpaperService {
 			
 			int numberOfSides = RandomNumberUtility.getRandomInteger(3, 8, 5);
 			for (int i = 0; i < numberOfSides; i++) {
-				int xCoordinate = RandomNumberUtility.getRandomInteger(0, screenWidth, 0);
-				int yCoordinate = RandomNumberUtility.getRandomInteger(0, screenHeight, 0);
+				int xCoordinate = RandomNumberUtility.getRandomInteger(0, EngineData.screenWidth, 0);
+				int yCoordinate = RandomNumberUtility.getRandomInteger(0, EngineData.screenHeight, 0);
 				
 				startingPoints.add(new DeltaPoint(xCoordinate, yCoordinate, 1, 1));
 			}
