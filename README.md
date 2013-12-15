@@ -8,5 +8,4 @@ It originally started off as an inspiration to create a basic screen saver using
 TODOs
 =====
 1. Add different types of color managers: static, triangle wave, and sine wave.
-2. Refactor the engine to have centeralized managers instead of it being shared in different classes.
-3. Add a prefernces activity to allow the user customize their live wallpaper.
+2. Add a prefernces activity to allow the user customize their live wallpaper.
