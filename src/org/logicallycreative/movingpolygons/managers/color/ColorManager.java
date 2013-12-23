@@ -27,17 +27,15 @@ public abstract class ColorManager implements ColorManagable {
 	protected int blueChannel;
 	
 	public ColorManager() {
-		redChannel = pickRandomColorValue();
-		greenChannel = pickRandomColorValue();
-		blueChannel = pickRandomColorValue();
-
 		linePaint.setAntiAlias(true);
 		linePaint.setStrokeCap(Paint.Cap.SQUARE);
 		linePaint.setStrokeWidth(1.5f);
 	}
 
-	private int pickRandomColorValue() {
-		return RandomNumberUtility.getRandomInteger(0, 255, 255);
+	protected void setRandomColorValues(int minimum, int maximum, int defaultValue) {
+			redChannel = RandomNumberUtility.getRandomInteger(minimum, maximum, defaultValue);
+			greenChannel = RandomNumberUtility.getRandomInteger(minimum, maximum, defaultValue);
+			blueChannel = RandomNumberUtility.getRandomInteger(minimum, maximum, defaultValue);
 	}
 
 	public abstract void changeColors();

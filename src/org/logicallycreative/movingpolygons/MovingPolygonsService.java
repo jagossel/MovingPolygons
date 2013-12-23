@@ -20,7 +20,7 @@ import java.util.List;
 
 import org.logicallycreative.movingpolygons.data.engine.EngineData;
 import org.logicallycreative.movingpolygons.data.shape.DeltaPoint;
-import org.logicallycreative.movingpolygons.managers.color.SawtoothColorManager;
+import org.logicallycreative.movingpolygons.managers.color.SineColorManager;
 import org.logicallycreative.movingpolygons.managers.drawing.EchoManager;
 import org.logicallycreative.movingpolygons.util.RandomNumberUtility;
 
@@ -121,7 +121,7 @@ public class MovingPolygonsService extends WallpaperService {
 			int numberOfEchoes = RandomNumberUtility.getRandomInteger(3, 10, 5);
 			int spacing = RandomNumberUtility.getRandomInteger(5, 10, 5);
 			
-			EngineData.colorManager = new SawtoothColorManager();
+			EngineData.colorManager = new SineColorManager();
 			EngineData.drawingManager = new EchoManager(numberOfEchoes, spacing);
 			EngineData.drawingManager.addPoints(startingPoints);
 		}

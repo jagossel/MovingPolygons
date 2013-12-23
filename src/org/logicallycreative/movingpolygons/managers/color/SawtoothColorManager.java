@@ -23,6 +23,11 @@ public class SawtoothColorManager extends ColorManager {
 	private int redIncrement = 1;
 	private int greenIncrement = 1;
 	private int blueIncrement = 1;
+	
+	public SawtoothColorManager() {
+		super();
+		super.setRandomColorValues(0, 255, 127);
+	}
 
 	@Override
 	public void changeColors() {
