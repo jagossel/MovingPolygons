@@ -21,7 +21,8 @@ public class DeltaPoint {
 	private int deltaX;
 	private int deltaY;
 
-	public DeltaPoint(int startingXCoordinate, int startingYCoordinate, int startingDeltaX, int startingDeltaY) {
+	public DeltaPoint(int startingXCoordinate, int startingYCoordinate,
+			int startingDeltaX, int startingDeltaY) {
 		xCoordinate = startingXCoordinate;
 		yCoordinate = startingYCoordinate;
 		deltaX = startingDeltaX;

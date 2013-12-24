@@ -15,15 +15,11 @@
 //along with this program.  If not, see <http://www.gnu.org/licenses/>.
 package org.logicallycreative.movingpolygons.managers.color;
 
-import org.logicallycreative.movingpolygons.util.RandomNumberUtility;
-
-import android.graphics.Paint;
-
 public class SawtoothColorManager extends ColorManager {
 	private int redIncrement = 1;
 	private int greenIncrement = 1;
 	private int blueIncrement = 1;
-	
+
 	public SawtoothColorManager() {
 		super();
 		super.setRandomColorValues(0, 255, 127);
@@ -39,7 +35,7 @@ public class SawtoothColorManager extends ColorManager {
 			super.redChannel = 0;
 			redIncrement *= -1;
 		}
-		
+
 		super.greenChannel += greenIncrement;
 		if (super.greenChannel >= 255) {
 			super.greenChannel = 255;
@@ -48,7 +44,7 @@ public class SawtoothColorManager extends ColorManager {
 			super.greenChannel = 0;
 			greenIncrement *= -1;
 		}
-		
+
 		super.blueChannel += blueIncrement;
 		if (super.blueChannel >= 255) {
 			super.blueChannel = 255;

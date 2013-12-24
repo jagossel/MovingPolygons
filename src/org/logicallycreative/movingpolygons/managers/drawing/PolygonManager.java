@@ -20,21 +20,20 @@ import java.util.List;
 import org.logicallycreative.movingpolygons.data.engine.EngineData;
 import org.logicallycreative.movingpolygons.data.shape.DeltaPoint;
 import org.logicallycreative.movingpolygons.data.shape.Polygon;
-import org.logicallycreative.movingpolygons.util.RandomNumberUtility;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
-import android.graphics.Paint.Cap;
-import android.util.Log;
 
 public class PolygonManager implements DrawingManagable {
 	private final Polygon polygon = new Polygon();
 
+	@Override
 	public void addPoints(List<DeltaPoint> points) {
 		for (DeltaPoint point : points)
 			polygon.addPoint(point);
 	}
 
+	@Override
 	public void movePoints() {
 		List<DeltaPoint> points = polygon.getPoints();
 		for (DeltaPoint point : points) {
@@ -65,6 +64,7 @@ public class PolygonManager implements DrawingManagable {
 		}
 	}
 
+	@Override
 	public void drawPoints(Canvas canvas) {
 		List<DeltaPoint> points = polygon.getPoints();
 		int pointsCount = points.size();

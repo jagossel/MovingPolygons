@@ -14,45 +14,49 @@
 //You should have received a copy of the GNU General Public License
 //along with this program.  If not, see <http://www.gnu.org/licenses/>.
 package org.logicallycreative.movingpolygons.managers.color;
+
 import org.logicallycreative.movingpolygons.util.*;
 
 public class SineColorManager extends ColorManager {
 	private final float sinePositionStart = (float) (Math.PI * -1);
 	private final float sinePositionEnd = (float) (Math.PI);
 	private final float precisionIncrement = 0.01f;
-	
+
 	private float redSinePosition;
 	private float greenSinePosition;
 	private float blueSinePosition;
-	
+
 	public SineColorManager() {
-		redSinePosition = RandomNumberUtility.getRandomFloat(sinePositionStart, sinePositionEnd, 0f, precisionIncrement);
-		greenSinePosition = RandomNumberUtility.getRandomFloat(sinePositionStart, sinePositionEnd, 0f, precisionIncrement);
-		blueSinePosition = RandomNumberUtility.getRandomFloat(sinePositionStart, sinePositionEnd, 0f, precisionIncrement);
+		redSinePosition = RandomNumberUtility.getRandomFloat(sinePositionStart,
+				sinePositionEnd, 0f, precisionIncrement);
+		greenSinePosition = RandomNumberUtility.getRandomFloat(
+				sinePositionStart, sinePositionEnd, 0f, precisionIncrement);
+		blueSinePosition = RandomNumberUtility.getRandomFloat(
+				sinePositionStart, sinePositionEnd, 0f, precisionIncrement);
 	}
-	
+
 	@Override
 	public void changeColors() {
 		redSinePosition += precisionIncrement;
 		if (redSinePosition > sinePositionEnd) {
 			redSinePosition = sinePositionStart;
 		}
-		
+
 		greenSinePosition += precisionIncrement;
 		if (greenSinePosition > sinePositionEnd) {
 			greenSinePosition = sinePositionStart;
 		}
-		
+
 		blueSinePosition += precisionIncrement;
 		if (blueSinePosition > sinePositionEnd) {
 			blueSinePosition = sinePositionStart;
 		}
-		
+
 		super.redChannel = calculateColorValue(redSinePosition);
 		super.greenChannel = calculateColorValue(greenSinePosition);
 		super.blueChannel = calculateColorValue(blueSinePosition);
 	}
-	
+
 	private int calculateColorValue(float sinePosition) {
 		return (int) ((127 * Math.sin(sinePosition)) + 127);
 	}

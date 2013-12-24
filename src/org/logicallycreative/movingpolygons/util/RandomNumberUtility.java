@@ -16,7 +16,8 @@
 package org.logicallycreative.movingpolygons.util;
 
 public class RandomNumberUtility {
-	public static int getRandomInteger(int minimumInteger, int maximumInteger, int defaultInteger) {
+	public static int getRandomInteger(int minimumInteger, int maximumInteger,
+			int defaultInteger) {
 		if (minimumInteger > maximumInteger)
 			return defaultInteger;
 
@@ -27,20 +28,21 @@ public class RandomNumberUtility {
 
 		return randomNumber;
 	}
-	
-	public static float getRandomFloat(float minimumFloat, float maximumFloat, float defaultFloat, float precision) {
+
+	public static float getRandomFloat(float minimumFloat, float maximumFloat,
+			float defaultFloat, float precision) {
 		if (minimumFloat > maximumFloat)
 			return defaultFloat;
-			
+
 		float range = maximumFloat - minimumFloat;
 		double randomDecimal = Math.random();
 		float randomFloat = (float) (randomDecimal * range);
 		float randomNumber = randomFloat + minimumFloat;
-		
+
 		float decimalShiftRight = randomNumber / precision;
 		float roundedFloat = Math.round(decimalShiftRight);
 		float decimalShiftLeft = roundedFloat * precision;
-		
+
 		return decimalShiftLeft;
 	}
 }

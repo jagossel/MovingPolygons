@@ -21,21 +21,25 @@ import android.graphics.Paint;
 
 public abstract class ColorManager implements ColorManagable {
 	protected final Paint linePaint = new Paint();
-	
+
 	protected int redChannel;
 	protected int greenChannel;
 	protected int blueChannel;
-	
+
 	public ColorManager() {
 		linePaint.setAntiAlias(true);
 		linePaint.setStrokeCap(Paint.Cap.SQUARE);
 		linePaint.setStrokeWidth(1.5f);
 	}
 
-	protected void setRandomColorValues(int minimum, int maximum, int defaultValue) {
-			redChannel = RandomNumberUtility.getRandomInteger(minimum, maximum, defaultValue);
-			greenChannel = RandomNumberUtility.getRandomInteger(minimum, maximum, defaultValue);
-			blueChannel = RandomNumberUtility.getRandomInteger(minimum, maximum, defaultValue);
+	protected void setRandomColorValues(int minimum, int maximum,
+			int defaultValue) {
+		redChannel = RandomNumberUtility.getRandomInteger(minimum, maximum,
+				defaultValue);
+		greenChannel = RandomNumberUtility.getRandomInteger(minimum, maximum,
+				defaultValue);
+		blueChannel = RandomNumberUtility.getRandomInteger(minimum, maximum,
+				defaultValue);
 	}
 
 	public abstract void changeColors();

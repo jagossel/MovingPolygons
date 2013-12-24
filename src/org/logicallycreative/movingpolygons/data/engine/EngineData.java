@@ -21,7 +21,7 @@ import org.logicallycreative.movingpolygons.managers.drawing.DrawingManagable;
 public class EngineData {
 	public static int screenWidth;
 	public static int screenHeight;
-	
+
 	public static ColorManagable colorManager;
 	public static DrawingManagable drawingManager;
 }

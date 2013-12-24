@@ -22,8 +22,7 @@ import org.logicallycreative.movingpolygons.data.shape.DeltaPoint;
 
 import android.graphics.Canvas;
 
-public class EchoManager implements DrawingManagable
-{
+public class EchoManager implements DrawingManagable {
 	private final List<PolygonManager> polygons = new ArrayList<PolygonManager>();
 
 	private final int echoSpacing;
@@ -43,20 +42,22 @@ public class EchoManager implements DrawingManagable
 		}
 	}
 
-	private void addEchoedPoints(List<DeltaPoint> basePoints, PolygonManager polygon, int factor) {
+	private void addEchoedPoints(List<DeltaPoint> basePoints,
+			PolygonManager polygon, int factor) {
 		int coordinateOffset = -1 * factor * echoSpacing;
-		
+
 		List<DeltaPoint> offsetPoints = new ArrayList<DeltaPoint>();
 		for (DeltaPoint basePoint : basePoints) {
 			int baseXCoordinate = basePoint.getXCoordinate();
 			int baseYCoordinate = basePoint.getYCoordinate();
-			
+
 			int offsetXCoordinate = baseXCoordinate + coordinateOffset;
 			int offsetYCoordinate = baseYCoordinate + coordinateOffset;
-			
-			offsetPoints.add(new DeltaPoint(offsetXCoordinate, offsetYCoordinate, 1, 1));
+
+			offsetPoints.add(new DeltaPoint(offsetXCoordinate,
+					offsetYCoordinate, 1, 1));
 		}
-		
+
 		polygon.addPoints(offsetPoints);
 	}
 

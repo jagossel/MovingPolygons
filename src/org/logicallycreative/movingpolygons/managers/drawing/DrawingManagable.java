@@ -23,6 +23,8 @@ import android.graphics.Canvas;
 
 public interface DrawingManagable {
 	void addPoints(List<DeltaPoint> points);
+
 	void movePoints();
+
 	void drawPoints(Canvas canvas);
 }

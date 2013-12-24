@@ -19,5 +19,6 @@ import android.graphics.Paint;
 
 public interface ColorManagable {
 	public void changeColors();
+
 	public Paint getLinePaint();
 }

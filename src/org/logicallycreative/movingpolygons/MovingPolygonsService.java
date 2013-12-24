@@ -77,8 +77,9 @@ public class MovingPolygonsService extends WallpaperService {
 		public void onSurfaceChanged(SurfaceHolder surface, int format,
 				int width, int height) {
 			super.onSurfaceChanged(surface, format, width, height);
-			
-			// TODO: Add in logic to keep the polygon, instead creating a new one.
+
+			// TODO: Add in logic to keep the polygon, instead creating a new
+			// one.
 			// For now, just create a new polygon when changing the surface.
 			createPolygonManager();
 		}
@@ -111,32 +112,36 @@ public class MovingPolygonsService extends WallpaperService {
 
 		private void createPolygonManager() {
 			DisplayMetrics metrics = new DisplayMetrics();
-			Display display = ((WindowManager) getSystemService(WINDOW_SERVICE)).getDefaultDisplay();
+			Display display = ((WindowManager) getSystemService(WINDOW_SERVICE))
+					.getDefaultDisplay();
 
 			display.getMetrics(metrics);
 			EngineData.screenWidth = metrics.widthPixels;
 			EngineData.screenHeight = metrics.heightPixels;
-			
+
 			List<DeltaPoint> startingPoints = createStartingPoints();
 			int numberOfEchoes = RandomNumberUtility.getRandomInteger(3, 10, 5);
 			int spacing = RandomNumberUtility.getRandomInteger(5, 10, 5);
-			
+
 			EngineData.colorManager = new SineColorManager();
 			EngineData.drawingManager = new EchoManager(numberOfEchoes, spacing);
 			EngineData.drawingManager.addPoints(startingPoints);
 		}
-		
+
 		private List<DeltaPoint> createStartingPoints() {
 			List<DeltaPoint> startingPoints = new ArrayList<DeltaPoint>();
-			
+
 			int numberOfSides = RandomNumberUtility.getRandomInteger(3, 8, 5);
 			for (int i = 0; i < numberOfSides; i++) {
-				int xCoordinate = RandomNumberUtility.getRandomInteger(0, EngineData.screenWidth, 0);
-				int yCoordinate = RandomNumberUtility.getRandomInteger(0, EngineData.screenHeight, 0);
-				
-				startingPoints.add(new DeltaPoint(xCoordinate, yCoordinate, 1, 1));
+				int xCoordinate = RandomNumberUtility.getRandomInteger(0,
+						EngineData.screenWidth, 0);
+				int yCoordinate = RandomNumberUtility.getRandomInteger(0,
+						EngineData.screenHeight, 0);
+
+				startingPoints.add(new DeltaPoint(xCoordinate, yCoordinate, 1,
+						1));
 			}
-			
+
 			return startingPoints;
 		}
 	}
