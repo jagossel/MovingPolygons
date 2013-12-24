@@ -15,12 +15,12 @@
 //along with this program.  If not, see <http://www.gnu.org/licenses/>.
 package org.logicallycreative.movingpolygons.managers.color;
 
-public class SawtoothColorManager extends ColorManager {
+public class SawtoothWave extends ColorManager {
 	private int redIncrement = 1;
 	private int greenIncrement = 1;
 	private int blueIncrement = 1;
 
-	public SawtoothColorManager() {
+	public SawtoothWave() {
 		super();
 		super.setRandomColorValues(0, 255, 127);
 	}

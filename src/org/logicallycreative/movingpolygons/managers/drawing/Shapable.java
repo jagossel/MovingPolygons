@@ -21,7 +21,7 @@ import org.logicallycreative.movingpolygons.data.shape.DeltaPoint;
 
 import android.graphics.Canvas;
 
-public interface DrawingManagable {
+public interface Shapable {
 	void addPoints(List<DeltaPoint> points);
 
 	void movePoints();

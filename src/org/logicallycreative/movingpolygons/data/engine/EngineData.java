@@ -15,13 +15,13 @@
 //along with this program.  If not, see <http://www.gnu.org/licenses/>.
 package org.logicallycreative.movingpolygons.data.engine;
 
-import org.logicallycreative.movingpolygons.managers.color.ColorManagable;
-import org.logicallycreative.movingpolygons.managers.drawing.DrawingManagable;
+import org.logicallycreative.movingpolygons.managers.color.Colorable;
+import org.logicallycreative.movingpolygons.managers.drawing.Shapable;
 
 public class EngineData {
 	public static int screenWidth;
 	public static int screenHeight;
 
-	public static ColorManagable colorManager;
-	public static DrawingManagable drawingManager;
+	public static Colorable colorManager;
+	public static Shapable drawingManager;
 }

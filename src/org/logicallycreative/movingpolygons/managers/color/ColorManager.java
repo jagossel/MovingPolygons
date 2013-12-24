@@ -19,7 +19,7 @@ import org.logicallycreative.movingpolygons.util.RandomNumberUtility;
 
 import android.graphics.Paint;
 
-public abstract class ColorManager implements ColorManagable {
+public abstract class ColorManager implements Colorable {
 	protected final Paint linePaint = new Paint();
 
 	protected int redChannel;

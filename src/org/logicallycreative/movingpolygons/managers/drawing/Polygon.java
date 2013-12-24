@@ -19,13 +19,13 @@ import java.util.List;
 
 import org.logicallycreative.movingpolygons.data.engine.EngineData;
 import org.logicallycreative.movingpolygons.data.shape.DeltaPoint;
-import org.logicallycreative.movingpolygons.data.shape.Polygon;
+import org.logicallycreative.movingpolygons.data.shape.Shape;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
-public class PolygonManager implements DrawingManagable {
-	private final Polygon polygon = new Polygon();
+public class Polygon implements Shapable {
+	private final Shape polygon = new Shape();
 
 	@Override
 	public void addPoints(List<DeltaPoint> points) {

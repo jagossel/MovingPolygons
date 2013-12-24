@@ -18,7 +18,7 @@ package org.logicallycreative.movingpolygons.data.shape;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Polygon {
+public class Shape {
 	private final List<DeltaPoint> points = new ArrayList<DeltaPoint>();
 
 	public void addPoint(DeltaPoint newPoint) {

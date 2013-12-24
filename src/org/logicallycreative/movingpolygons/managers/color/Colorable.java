@@ -17,7 +17,7 @@ package org.logicallycreative.movingpolygons.managers.color;
 
 import android.graphics.Paint;
 
-public interface ColorManagable {
+public interface Colorable {
 	public void changeColors();
 
 	public Paint getLinePaint();
