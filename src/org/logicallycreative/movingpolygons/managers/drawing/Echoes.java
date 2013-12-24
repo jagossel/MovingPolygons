@@ -72,11 +72,11 @@ public class Echoes implements Shapable {
 	@Override
 	public void drawPoints(Canvas canvas) {
 		int echoCount = polygons.size();
-		int scale = 127 / echoCount;
+		int scale = 192 / echoCount;
 
 		for (int i = 0; i < echoCount; i++) {
 			Polygon polygon = polygons.get(i);
-			int alpha = ((echoCount - i) * scale) + 127;
+			int alpha = ((echoCount - i) * scale) + 63;
 
 			EngineData.colorManager.setAlpha(alpha);
 			polygon.drawPoints(canvas);
