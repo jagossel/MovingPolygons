@@ -18,6 +18,7 @@ package org.logicallycreative.movingpolygons.managers.drawing;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.logicallycreative.movingpolygons.data.engine.EngineData;
 import org.logicallycreative.movingpolygons.data.shape.DeltaPoint;
 
 import android.graphics.Canvas;
@@ -34,6 +35,7 @@ public class Echoes implements Shapable {
 			polygons.add(new Polygon());
 	}
 
+	@Override
 	public void addPoints(List<DeltaPoint> points) {
 		int factor = 0;
 		for (Polygon polygon : polygons) {
@@ -42,8 +44,8 @@ public class Echoes implements Shapable {
 		}
 	}
 
-	private void addEchoedPoints(List<DeltaPoint> basePoints,
-			Polygon polygon, int factor) {
+	private void addEchoedPoints(List<DeltaPoint> basePoints, Polygon polygon,
+			int factor) {
 		int coordinateOffset = -1 * factor * echoSpacing;
 
 		List<DeltaPoint> offsetPoints = new ArrayList<DeltaPoint>();
@@ -61,13 +63,23 @@ public class Echoes implements Shapable {
 		polygon.addPoints(offsetPoints);
 	}
 
+	@Override
 	public void movePoints() {
 		for (Polygon polygon : polygons)
 			polygon.movePoints();
 	}
 
+	@Override
 	public void drawPoints(Canvas canvas) {
-		for (Polygon polygon : polygons)
+		int echoCount = polygons.size();
+		int scale = 127 / echoCount;
+
+		for (int i = 0; i < echoCount; i++) {
+			Polygon polygon = polygons.get(i);
+			int alpha = (i * scale) + 127;
+
+			EngineData.colorManager.setAlpha(alpha);
 			polygon.drawPoints(canvas);
+		}
 	}
 }

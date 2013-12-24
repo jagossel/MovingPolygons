@@ -22,6 +22,7 @@ import android.graphics.Paint;
 public abstract class ColorManager implements Colorable {
 	protected final Paint linePaint = new Paint();
 
+	protected int alphaChannel;
 	protected int redChannel;
 	protected int greenChannel;
 	protected int blueChannel;
@@ -42,10 +43,17 @@ public abstract class ColorManager implements Colorable {
 				defaultValue);
 	}
 
+	@Override
 	public abstract void changeColors();
 
+	@Override
+	public void setAlpha(int alpha) {
+		alphaChannel = alpha;
+	}
+
+	@Override
 	public final Paint getLinePaint() {
-		linePaint.setARGB(255, redChannel, greenChannel, blueChannel);
+		linePaint.setARGB(alphaChannel, redChannel, greenChannel, blueChannel);
 
 		return linePaint;
 	}

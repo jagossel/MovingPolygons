@@ -20,5 +20,7 @@ import android.graphics.Paint;
 public interface Colorable {
 	public void changeColors();
 
+	public void setAlpha(int alpha);
+
 	public Paint getLinePaint();
 }
