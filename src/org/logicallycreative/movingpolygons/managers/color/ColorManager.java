@@ -33,8 +33,7 @@ public abstract class ColorManager implements Colorable {
 		linePaint.setStrokeWidth(1.5f);
 	}
 
-	protected void setRandomColorValues(int minimum, int maximum,
-			int defaultValue) {
+	protected void setRandomColorValues(int minimum, int maximum) {
 		redChannel = RandomNumberUtility.getRandomInteger(minimum, maximum);
 		greenChannel = RandomNumberUtility.getRandomInteger(minimum, maximum);
 		blueChannel = RandomNumberUtility.getRandomInteger(minimum, maximum);

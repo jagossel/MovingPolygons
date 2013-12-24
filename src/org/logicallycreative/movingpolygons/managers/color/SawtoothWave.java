@@ -22,7 +22,7 @@ public class SawtoothWave extends ColorManager {
 
 	public SawtoothWave() {
 		super();
-		super.setRandomColorValues(0, 255, 127);
+		super.setRandomColorValues(0, 255);
 	}
 
 	@Override

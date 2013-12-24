@@ -78,8 +78,7 @@ public class MovingPolygonsService extends WallpaperService {
 				int width, int height) {
 			super.onSurfaceChanged(surface, format, width, height);
 
-			// TODO: Add in logic to keep the polygon, instead creating a new
-			// one.
+			// TODO: Add in logic to keep the polygon...
 			// For now, just create a new polygon when changing the surface.
 			createPolygonManager();
 		}
