@@ -76,7 +76,7 @@ public class Echoes implements Shapable {
 
 		for (int i = 0; i < echoCount; i++) {
 			Polygon polygon = polygons.get(i);
-			int alpha = 255 - ((i * scale) + 127);
+			int alpha = ((echoCount - i) * scale) + 127;
 
 			EngineData.colorManager.setAlpha(alpha);
 			polygon.drawPoints(canvas);
