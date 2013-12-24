@@ -15,15 +15,18 @@
 //along with this program.  If not, see <http://www.gnu.org/licenses/>.
 package org.logicallycreative.movingpolygons.util;
 
+import java.util.Random;
+
 public class RandomNumberUtility {
+	private static final Random randomNumberGenerator = new Random();
+
 	public static int getRandomInteger(int minimumInteger, int maximumInteger,
 			int defaultInteger) {
 		if (minimumInteger > maximumInteger)
 			return defaultInteger;
 
 		int range = maximumInteger - minimumInteger;
-		double randomDecimal = Math.random();
-		int randomInteger = (int) (randomDecimal * range);
+		int randomInteger = randomNumberGenerator.nextInt(range);
 		int randomNumber = randomInteger + minimumInteger;
 
 		return randomNumber;
@@ -35,8 +38,7 @@ public class RandomNumberUtility {
 			return defaultFloat;
 
 		float range = maximumFloat - minimumFloat;
-		double randomDecimal = Math.random();
-		float randomFloat = (float) (randomDecimal * range);
+		float randomFloat = randomNumberGenerator.nextFloat() * range;
 		float randomNumber = randomFloat + minimumFloat;
 
 		float decimalShiftRight = randomNumber / precision;
