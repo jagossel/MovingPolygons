@@ -15,7 +15,7 @@
 //along with this program.  If not, see <http://www.gnu.org/licenses/>.
 package org.logicallycreative.movingpolygons.managers.color;
 
-import org.logicallycreative.movingpolygons.util.*;
+import org.logicallycreative.movingpolygons.util.RandomNumberUtility;
 
 public class SineWave extends ColorManager {
 	private final float sinePositionStart = (float) (Math.PI * -1);
@@ -28,11 +28,11 @@ public class SineWave extends ColorManager {
 
 	public SineWave() {
 		redSinePosition = RandomNumberUtility.getRandomFloat(sinePositionStart,
-				sinePositionEnd, 0f, precisionIncrement);
+				sinePositionEnd, precisionIncrement);
 		greenSinePosition = RandomNumberUtility.getRandomFloat(
-				sinePositionStart, sinePositionEnd, 0f, precisionIncrement);
+				sinePositionStart, sinePositionEnd, precisionIncrement);
 		blueSinePosition = RandomNumberUtility.getRandomFloat(
-				sinePositionStart, sinePositionEnd, 0f, precisionIncrement);
+				sinePositionStart, sinePositionEnd, precisionIncrement);
 	}
 
 	@Override

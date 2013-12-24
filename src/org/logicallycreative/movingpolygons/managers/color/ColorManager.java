@@ -35,12 +35,9 @@ public abstract class ColorManager implements Colorable {
 
 	protected void setRandomColorValues(int minimum, int maximum,
 			int defaultValue) {
-		redChannel = RandomNumberUtility.getRandomInteger(minimum, maximum,
-				defaultValue);
-		greenChannel = RandomNumberUtility.getRandomInteger(minimum, maximum,
-				defaultValue);
-		blueChannel = RandomNumberUtility.getRandomInteger(minimum, maximum,
-				defaultValue);
+		redChannel = RandomNumberUtility.getRandomInteger(minimum, maximum);
+		greenChannel = RandomNumberUtility.getRandomInteger(minimum, maximum);
+		blueChannel = RandomNumberUtility.getRandomInteger(minimum, maximum);
 	}
 
 	@Override

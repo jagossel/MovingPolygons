@@ -20,10 +20,12 @@ import java.util.Random;
 public class RandomNumberUtility {
 	private static final Random randomNumberGenerator = new Random();
 
-	public static int getRandomInteger(int minimumInteger, int maximumInteger,
-			int defaultInteger) {
-		if (minimumInteger > maximumInteger)
-			return defaultInteger;
+	public static int getRandomInteger(int minimumInteger, int maximumInteger) {
+		if (minimumInteger > maximumInteger) {
+			int temporaryHolder = maximumInteger;
+			maximumInteger = minimumInteger;
+			minimumInteger = temporaryHolder;
+		}
 
 		int range = maximumInteger - minimumInteger;
 		int randomInteger = randomNumberGenerator.nextInt(range);
@@ -33,9 +35,12 @@ public class RandomNumberUtility {
 	}
 
 	public static float getRandomFloat(float minimumFloat, float maximumFloat,
-			float defaultFloat, float precision) {
-		if (minimumFloat > maximumFloat)
-			return defaultFloat;
+			float precision) {
+		if (minimumFloat > maximumFloat) {
+			float temporaryHolder = maximumFloat;
+			maximumFloat = minimumFloat;
+			minimumFloat = temporaryHolder;
+		}
 
 		float range = maximumFloat - minimumFloat;
 		float randomFloat = randomNumberGenerator.nextFloat() * range;

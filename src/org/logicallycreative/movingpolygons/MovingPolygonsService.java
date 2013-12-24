@@ -120,8 +120,8 @@ public class MovingPolygonsService extends WallpaperService {
 			EngineData.screenHeight = metrics.heightPixels;
 
 			List<DeltaPoint> startingPoints = createStartingPoints();
-			int numberOfEchoes = RandomNumberUtility.getRandomInteger(3, 10, 5);
-			int spacing = RandomNumberUtility.getRandomInteger(5, 10, 5);
+			int numberOfEchoes = RandomNumberUtility.getRandomInteger(3, 10);
+			int spacing = RandomNumberUtility.getRandomInteger(5, 10);
 
 			EngineData.colorManager = new SineWave();
 			EngineData.drawingManager = new Echoes(numberOfEchoes, spacing);
@@ -131,12 +131,12 @@ public class MovingPolygonsService extends WallpaperService {
 		private List<DeltaPoint> createStartingPoints() {
 			List<DeltaPoint> startingPoints = new ArrayList<DeltaPoint>();
 
-			int numberOfSides = RandomNumberUtility.getRandomInteger(3, 8, 5);
+			int numberOfSides = RandomNumberUtility.getRandomInteger(3, 8);
 			for (int i = 0; i < numberOfSides; i++) {
 				int xCoordinate = RandomNumberUtility.getRandomInteger(0,
-						EngineData.screenWidth, 0);
+						EngineData.screenWidth);
 				int yCoordinate = RandomNumberUtility.getRandomInteger(0,
-						EngineData.screenHeight, 0);
+						EngineData.screenHeight);
 
 				startingPoints.add(new DeltaPoint(xCoordinate, yCoordinate, 1,
 						1));
