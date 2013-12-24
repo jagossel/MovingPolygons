@@ -22,34 +22,34 @@ public class SawtoothWave extends ColorManager {
 
 	public SawtoothWave() {
 		super();
-		super.setRandomColorValues(0, 255);
+		super.setRandomColorValues();
 	}
 
 	@Override
 	public void changeColors() {
 		super.redChannel += redIncrement;
-		if (super.redChannel >= 255) {
+		if (super.redChannel >= super.maximumColorValue) {
 			super.redChannel = 255;
 			redIncrement *= -1;
-		} else if (super.redChannel <= 0) {
+		} else if (super.redChannel <= super.minimumColorValue) {
 			super.redChannel = 0;
 			redIncrement *= -1;
 		}
 
 		super.greenChannel += greenIncrement;
-		if (super.greenChannel >= 255) {
+		if (super.greenChannel >= super.maximumColorValue) {
 			super.greenChannel = 255;
 			greenIncrement *= -1;
-		} else if (super.greenChannel <= 0) {
+		} else if (super.greenChannel <= super.minimumColorValue) {
 			super.greenChannel = 0;
 			greenIncrement *= -1;
 		}
 
 		super.blueChannel += blueIncrement;
-		if (super.blueChannel >= 255) {
+		if (super.blueChannel >= super.maximumColorValue) {
 			super.blueChannel = 255;
 			blueIncrement *= -1;
-		} else if (super.blueChannel <= 0) {
+		} else if (super.blueChannel <= super.minimumColorValue) {
 			super.blueChannel = 0;
 			blueIncrement *= -1;
 		}

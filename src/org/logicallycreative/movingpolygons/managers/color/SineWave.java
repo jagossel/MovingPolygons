@@ -18,15 +18,25 @@ package org.logicallycreative.movingpolygons.managers.color;
 import org.logicallycreative.movingpolygons.util.RandomNumberUtility;
 
 public class SineWave extends ColorManager {
-	private final float sinePositionStart = (float) (Math.PI * -1);
-	private final float sinePositionEnd = (float) (Math.PI);
 	private final float precisionIncrement = 0.01f;
+	private final float sinePositionStart;
+	private final float sinePositionEnd;
+	private final float sineRange;
+	private final float sineCenter;
 
 	private float redSinePosition;
 	private float greenSinePosition;
 	private float blueSinePosition;
 
 	public SineWave() {
+		super();
+
+		sinePositionStart = (float) (Math.PI * -1f);
+		sinePositionEnd = (float) Math.PI;
+
+		sineRange = (super.maximumColorValue - super.minimumColorValue) / 2;
+		sineCenter = sineRange + super.minimumColorValue;
+
 		redSinePosition = RandomNumberUtility.getRandomFloat(sinePositionStart,
 				sinePositionEnd, precisionIncrement);
 		greenSinePosition = RandomNumberUtility.getRandomFloat(
@@ -58,6 +68,6 @@ public class SineWave extends ColorManager {
 	}
 
 	private int calculateColorValue(float sinePosition) {
-		return (int) ((127 * Math.sin(sinePosition)) + 127);
+		return (int) ((sineRange * Math.sin(sinePosition)) + sineCenter);
 	}
 }

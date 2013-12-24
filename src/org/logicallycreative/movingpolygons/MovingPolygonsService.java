@@ -15,14 +15,8 @@
 //along with this program.  If not, see <http://www.gnu.org/licenses/>.
 package org.logicallycreative.movingpolygons;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.logicallycreative.movingpolygons.data.engine.EngineData;
-import org.logicallycreative.movingpolygons.data.shape.DeltaPoint;
-import org.logicallycreative.movingpolygons.managers.color.SineWave;
-import org.logicallycreative.movingpolygons.managers.drawing.Echoes;
-import org.logicallycreative.movingpolygons.util.RandomNumberUtility;
+import org.logicallycreative.movingpolygons.data.engine.SettingsData;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -40,6 +34,8 @@ public class MovingPolygonsService extends WallpaperService {
 	}
 
 	private class MovingPolygonsEngine extends Engine {
+		private static final int delayPostingInMilliseconds = 10;
+
 		private final Handler handler = new Handler();
 		private final Runnable serviceRunner = new Runnable() {
 			@Override
@@ -106,7 +102,7 @@ public class MovingPolygonsService extends WallpaperService {
 			if (!screenVisible)
 				return;
 
-			handler.postDelayed(serviceRunner, 20);
+			handler.postDelayed(serviceRunner, delayPostingInMilliseconds);
 		}
 
 		private void createPolygonManager() {
@@ -115,33 +111,11 @@ public class MovingPolygonsService extends WallpaperService {
 					.getDefaultDisplay();
 
 			display.getMetrics(metrics);
+
 			EngineData.screenWidth = metrics.widthPixels;
 			EngineData.screenHeight = metrics.heightPixels;
-
-			List<DeltaPoint> startingPoints = createStartingPoints();
-			int numberOfEchoes = RandomNumberUtility.getRandomInteger(3, 10);
-			int spacing = RandomNumberUtility.getRandomInteger(5, 10);
-
-			EngineData.colorManager = new SineWave();
-			EngineData.drawingManager = new Echoes(numberOfEchoes, spacing);
-			EngineData.drawingManager.addPoints(startingPoints);
-		}
-
-		private List<DeltaPoint> createStartingPoints() {
-			List<DeltaPoint> startingPoints = new ArrayList<DeltaPoint>();
-
-			int numberOfSides = RandomNumberUtility.getRandomInteger(3, 8);
-			for (int i = 0; i < numberOfSides; i++) {
-				int xCoordinate = RandomNumberUtility.getRandomInteger(0,
-						EngineData.screenWidth);
-				int yCoordinate = RandomNumberUtility.getRandomInteger(0,
-						EngineData.screenHeight);
-
-				startingPoints.add(new DeltaPoint(xCoordinate, yCoordinate, 1,
-						1));
-			}
-
-			return startingPoints;
+			EngineData.colorManager = SettingsData.getColorManager();
+			EngineData.drawingManager = SettingsData.getShapeManager();
 		}
 	}
 }

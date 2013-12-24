@@ -15,11 +15,13 @@
 //along with this program.  If not, see <http://www.gnu.org/licenses/>.
 package org.logicallycreative.movingpolygons.managers.color;
 
-import org.logicallycreative.movingpolygons.util.RandomNumberUtility;
+import org.logicallycreative.movingpolygons.data.engine.SettingsData;
 
 import android.graphics.Paint;
 
 public abstract class ColorManager implements Colorable {
+	protected final int minimumColorValue;
+	protected final int maximumColorValue;
 	protected final Paint linePaint = new Paint();
 
 	protected int alphaChannel;
@@ -28,15 +30,18 @@ public abstract class ColorManager implements Colorable {
 	protected int blueChannel;
 
 	public ColorManager() {
+		minimumColorValue = SettingsData.getMinimumColorValue();
+		maximumColorValue = SettingsData.getMaximumColorValue();
+
 		linePaint.setAntiAlias(true);
 		linePaint.setStrokeCap(Paint.Cap.SQUARE);
-		linePaint.setStrokeWidth(1.5f);
+		linePaint.setStrokeWidth(1f);
 	}
 
-	protected void setRandomColorValues(int minimum, int maximum) {
-		redChannel = RandomNumberUtility.getRandomInteger(minimum, maximum);
-		greenChannel = RandomNumberUtility.getRandomInteger(minimum, maximum);
-		blueChannel = RandomNumberUtility.getRandomInteger(minimum, maximum);
+	protected void setRandomColorValues() {
+		redChannel = SettingsData.getRedValue();
+		greenChannel = SettingsData.getGreeValue();
+		blueChannel = SettingsData.getBlueValue();
 	}
 
 	@Override
