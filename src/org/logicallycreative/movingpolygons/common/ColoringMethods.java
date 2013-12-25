@@ -13,18 +13,10 @@
 //
 //You should have received a copy of the GNU General Public License
 //along with this program.  If not, see <http://www.gnu.org/licenses/>.
-package org.logicallycreative.movingpolygons.data.engine;
+package org.logicallycreative.movingpolygons.common;
 
-import org.logicallycreative.movingpolygons.loaders.EngineLoader;
-import org.logicallycreative.movingpolygons.managers.color.Colorable;
-import org.logicallycreative.movingpolygons.managers.drawing.Shapable;
-
-public class EngineData {
-	public static int screenWidth;
-	public static int screenHeight;
-
-	public static SettingsData settings;
-	public static EngineLoader engineLoader;
-	public static Colorable colorManager;
-	public static Shapable drawingManager;
+public class ColoringMethods {
+	public static final String Sine = "SineWave";
+	public static final String Sawtooth = "SawtoothWave";
+	public static final String Static = "StaticColor";
 }

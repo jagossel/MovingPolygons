@@ -18,24 +18,48 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 	<PreferenceCategory
 		android:title="@string/shape_category_title">
+		<CheckBoxPreference
+			android:key="specify_point_count"
+			android:title="@string/set_point_count_title"
+			android:defaultValue="false" />
 		<ListPreference
 			android:key="polygon_point_count"
 			android:title="@string/point_count_title"
 			android:summary="@string/point_count_summary"
-			android:entries="@array/point_count_list_names"
-			android:entryValues="@array/point_count_list_values" />
+			android:entries="@array/point_count_list"
+			android:entryValues="@array/point_count_list"
+			android:dependency="specify_point_count" />
+	</PreferenceCategory>
+	<PreferenceCategory
+		android:title="@string/echoes_category_title">
+		<CheckBoxPreference
+			android:key="add_echoes"
+			android:title="@string/add_echoes_title"
+			android:defaultValue="false" />
+		<CheckBoxPreference
+			android:key="specify_echo_count"
+			android:title="@string/set_echo_count_title"
+			android:dependency="add_echoes"
+			android:defaultValue="false" />
 		<ListPreference
-			android:key="echoes_count"
+			android:key="echo_count"
 			android:title="@string/echo_count_title"
 			android:summary="@string/echo_count_summary"
-			android:entries="@array/echo_count_list_names"
-			android:entryValues="@array/echo_count_list_values" />
+			android:entries="@array/echo_count_list"
+			android:entryValues="@array/echo_count_list"
+			android:dependency="specify_echo_count" />
+		<CheckBoxPreference
+			android:key="specify_echo_spacing"
+			android:title="@string/set_echo_spacing_title"
+			android:dependency="add_echoes"
+			android:defaultValue="false" />
 		<ListPreference
 			android:key="echo_spacing"
 			android:title="@string/echo_spacing_title"
 			android:summary="@string/echo_spacing_summary"
-			android:entries="@array/echo_spacing_list_names"
-			android:entryValues="@array/echo_spacing_list_values" />
+			android:entries="@array/echo_spacing_list"
+			android:entryValues="@array/echo_spacing_list"
+			android:dependency="specify_echo_spacing" />
 	</PreferenceCategory>
 	<PreferenceCategory
 		android:title="@string/color_category_title">

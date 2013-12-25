@@ -17,6 +17,7 @@ package org.logicallycreative.movingpolygons;
 
 import org.logicallycreative.movingpolygons.data.engine.EngineData;
 import org.logicallycreative.movingpolygons.data.engine.SettingsData;
+import org.logicallycreative.movingpolygons.loaders.EngineLoader;
 
 import android.content.SharedPreferences;
 import android.graphics.Canvas;
@@ -60,7 +61,7 @@ public class MovingPolygonsService extends WallpaperService {
 		private boolean screenVisible;
 
 		public MovingPolygonsEngine(SharedPreferences preferences) {
-			EngineData.settings = new SettingsData(preferences);
+			initializeEngine(preferences);
 		}
 
 		@Override
@@ -99,8 +100,13 @@ public class MovingPolygonsService extends WallpaperService {
 		@Override
 		public void onSharedPreferenceChanged(SharedPreferences preferences,
 				String key) {
-			EngineData.settings = new SettingsData(preferences);
+			initializeEngine(preferences);
 			createPolygonManager();
+		}
+
+		private void initializeEngine(SharedPreferences preferences) {
+			EngineData.settings = new SettingsData(preferences);
+			EngineData.engineLoader = new EngineLoader();
 		}
 
 		private void drawFrame() {
@@ -138,8 +144,9 @@ public class MovingPolygonsService extends WallpaperService {
 
 			EngineData.screenWidth = metrics.widthPixels;
 			EngineData.screenHeight = metrics.heightPixels;
-			EngineData.colorManager = EngineData.settings.getColorManager();
-			EngineData.drawingManager = EngineData.settings.getShapeManager();
+			EngineData.colorManager = EngineData.engineLoader.getColorManager();
+			EngineData.drawingManager = EngineData.engineLoader
+					.getShapeManager();
 		}
 	}
 }

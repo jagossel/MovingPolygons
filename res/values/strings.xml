@@ -22,18 +22,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	<string name="preferences_title">Settings</string>
 
 	<string name="shape_category_title">Shape</string>
-
-	<string name="point_count_title">Set Point Count</string>
+	<string name="set_point_count_title">Set Point Count</string>
+	<string name="point_count_title">Point Count</string>
 	<string name="point_count_summary">Specifies the number of points.</string>
 
-	<string name="echo_count_title">Set Echos Count</string>
+	<string name="echoes_category_title">Echoes</string>
+	<string name="add_echoes_title">Add Echoes</string>
+	<string name="set_echo_count_title">Set Echo Count</string>
+	<string name="echo_count_title">Echos Count</string>
 	<string name="echo_count_summary">Specifies the number of echoes.</string>
-
-	<string name="echo_spacing_title">Set Spacing</string>
+	<string name="set_echo_spacing_title">Set Echo Spacing</string>
+	<string name="echo_spacing_title">Echo Spacing</string>
 	<string name="echo_spacing_summary">Specifies the speacing between echoes.</string>
 
 	<string name="color_category_title">Color</string>
-
 	<string name="color_change_type_title">Color Chaning Method</string>
 	<string name="color_change_type_summary">Specifics how the color should change.</string>
 </resources>

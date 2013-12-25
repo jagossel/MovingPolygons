@@ -15,130 +15,107 @@
 //along with this program.  If not, see <http://www.gnu.org/licenses/>.
 package org.logicallycreative.movingpolygons.data.engine;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.logicallycreative.movingpolygons.data.shape.DeltaPoint;
-import org.logicallycreative.movingpolygons.managers.color.Colorable;
-import org.logicallycreative.movingpolygons.managers.color.SawtoothWave;
-import org.logicallycreative.movingpolygons.managers.color.SineWave;
-import org.logicallycreative.movingpolygons.managers.color.StaticColor;
-import org.logicallycreative.movingpolygons.managers.drawing.Echoes;
-import org.logicallycreative.movingpolygons.managers.drawing.Polygon;
-import org.logicallycreative.movingpolygons.managers.drawing.Shapable;
+import org.logicallycreative.movingpolygons.common.ColoringMethods;
+import org.logicallycreative.movingpolygons.common.SettingNames;
 import org.logicallycreative.movingpolygons.util.RandomNumberUtility;
 
 import android.content.SharedPreferences;
 
 public class SettingsData {
-	private final String echoCountSettingName = "echoes_count";
-	private final String echoSpacingSettingName = "echo_spacing";
-	private final String pointCountSettingName = "polygon_point_count";
-	private final String colorMethodSettingName = "color_change_method";
-
-	private final String coloringMethodSineWave = "SineWave";
-	private final String coloringMethodSawtoothWave = "SawtoothWave";
-	private final String coloringMethodStatic = "Static";
+	private final String defaultPointCount = "3";
+	private final String defaultEchoCount = "5";
+	private final String defaultEchoSpacing = "5";
 
 	private final boolean addEchoes;
+	private final boolean setPointCount;
+	private final boolean setEchoCount;
+	private final boolean setEchoSpacing;
+	private final int pointCount;
 	private final int echoCount;
 	private final int echoSpacing;
-	private final int pointCount;
-	private final String coloringMethodName;
+	private final String coloringMethod;
 
-	public SettingsData(SharedPreferences sharedPreferences) {
-		String echoCountSetting = sharedPreferences.getString(
-				echoCountSettingName, "-1");
-		String echoSpacingSetting = sharedPreferences.getString(
-				echoSpacingSettingName, "-1");
-		String pointCountSetting = sharedPreferences.getString(
-				pointCountSettingName, "-1");
-		coloringMethodName = sharedPreferences.getString(
-				colorMethodSettingName, coloringMethodSineWave);
+	public SettingsData(SharedPreferences settings) {
+		addEchoes = settings.getBoolean(SettingNames.addEchoes, true);
+		setPointCount = settings.getBoolean(SettingNames.setPointCount, false);
+		setEchoCount = settings.getBoolean(SettingNames.setEchoCount, false);
+		setEchoSpacing = settings
+				.getBoolean(SettingNames.setEchoSpacing, false);
 
-		echoCount = Integer.parseInt(echoCountSetting);
-		addEchoes = echoCount != -2;
-
-		echoSpacing = Integer.parseInt(echoSpacingSetting);
-		pointCount = Integer.parseInt(pointCountSetting);
-	}
-
-	public Colorable getColorManager() {
-		if (coloringMethodName == coloringMethodSawtoothWave) {
-			return new SawtoothWave();
-		} else if (coloringMethodName == coloringMethodStatic) {
-			return new StaticColor();
+		if (setPointCount) {
+			pointCount = getSettingInteger(settings, SettingNames.pointCount,
+					defaultPointCount);
 		} else {
-			return new SineWave();
+			pointCount = 0;
 		}
-	}
 
-	public Shapable getShapeManager() {
-		List<DeltaPoint> startingPoints = createStartingPoints();
-
-		Shapable shapeManager = null;
-		if (addEchoes) {
-			shapeManager = getEchoesShapeManager();
+		if (addEchoes && setEchoCount) {
+			echoCount = getSettingInteger(settings, SettingNames.echoCount,
+					defaultEchoCount);
 		} else {
-			shapeManager = getPolygonManager();
+			echoCount = 0;
 		}
 
-		shapeManager.addPoints(startingPoints);
-
-		return shapeManager;
-	}
-
-	private Shapable getEchoesShapeManager() {
-		int numberOfEchoes = getEchoCount();
-		int spacing = getSpacing();
-
-		return new Echoes(numberOfEchoes, spacing);
-	}
-
-	private Shapable getPolygonManager() {
-		return new Polygon();
-	}
-
-	private List<DeltaPoint> createStartingPoints() {
-		List<DeltaPoint> startingPoints = new ArrayList<DeltaPoint>();
-
-		int numberOfSides = getNumberOfPoints();
-		for (int i = 0; i < numberOfSides; i++) {
-			int xCoordinate = RandomNumberUtility.getRandomInteger(0,
-					EngineData.screenWidth);
-			int yCoordinate = RandomNumberUtility.getRandomInteger(0,
-					EngineData.screenHeight);
-
-			startingPoints.add(new DeltaPoint(xCoordinate, yCoordinate, 1, 1));
+		if (addEchoes && setEchoSpacing) {
+			echoSpacing = getSettingInteger(settings, SettingNames.echoSpacing,
+					defaultEchoSpacing);
+		} else {
+			echoSpacing = 0;
 		}
 
-		return startingPoints;
+		coloringMethod = settings.getString(SettingNames.coloringMethod,
+				ColoringMethods.Sine);
 	}
 
-	private int getEchoCount() {
-		if (echoCount == -2) {
-			return 1;
-		} else if (echoCount == -1) {
+	private int getSettingInteger(SharedPreferences settings,
+			String settingName, String defaultValue) {
+		String settingValue = settings.getString(settingName, defaultValue);
+
+		return Integer.parseInt(settingValue);
+	}
+
+	public boolean getAddEchoes() {
+		return addEchoes;
+	}
+
+	public int getEchoCount() {
+		if (addEchoes && setEchoCount) {
+			return echoCount;
+		} else if (addEchoes) {
 			return RandomNumberUtility.getRandomInteger(4, 11);
 		} else {
-			return echoCount;
+			return 0;
 		}
 	}
 
-	private int getSpacing() {
-		if (echoSpacing == -1) {
+	public int getEchoSpacing() {
+		if (addEchoes && setEchoSpacing) {
+			return echoSpacing;
+		} else if (addEchoes) {
 			return RandomNumberUtility.getRandomInteger(5, 10);
 		} else {
-			return echoSpacing;
+			return 0;
 		}
 	}
 
-	private int getNumberOfPoints() {
-		if (pointCount == -1) {
-			return RandomNumberUtility.getRandomInteger(3, 8);
-		} else {
+	public int getPointCount() {
+		if (setPointCount) {
 			return pointCount;
+		} else {
+			return RandomNumberUtility.getRandomInteger(3, 8);
 		}
+	}
+
+	public String getColoringMethod() {
+		return coloringMethod;
+	}
+
+	public int getMinimumColorValue() {
+		return 63;
+	}
+
+	public int getMaximumColorValue() {
+		return 255;
 	}
 
 	public int getRedValue() {
@@ -158,13 +135,5 @@ public class SettingsData {
 		int maximum = getMaximumColorValue();
 
 		return RandomNumberUtility.getRandomInteger(minimum, maximum);
-	}
-
-	public int getMinimumColorValue() {
-		return 63;
-	}
-
-	public int getMaximumColorValue() {
-		return 255;
 	}
 }

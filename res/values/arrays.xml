@@ -16,8 +16,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 <resources>
-	<string-array name="point_count_list_names">
-		<item>Random</item>
+	<string-array name="point_count_list">
 		<item>3</item>
 		<item>4</item>
 		<item>5</item>
@@ -26,19 +25,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 		<item>8</item>
 	</string-array>
 
-	<string-array name="point_count_list_values">
-		<item>-1</item>
-		<item>3</item>
-		<item>4</item>
-		<item>5</item>
-		<item>6</item>
-		<item>7</item>
-		<item>8</item>
-	</string-array>
-
-	<string-array name="echo_count_list_names">
-		<item>No Echoes</item>
-		<item>Random</item>
+	<string-array name="echo_count_list">
 		<item>3</item>
 		<item>4</item>
 		<item>5</item>
@@ -49,31 +36,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 		<item>10</item>
 	</string-array>
 
-	<string-array name="echo_count_list_values">
-		<item>-2</item>
-		<item>-1</item>
-		<item>4</item>
-		<item>5</item>
-		<item>6</item>
-		<item>7</item>
-		<item>8</item>
-		<item>9</item>
-		<item>10</item>
-		<item>11</item>
-	</string-array>
-
-	<string-array name="echo_spacing_list_names">
-		<item>Random</item>
-		<item>5</item>
-		<item>6</item>
-		<item>7</item>
-		<item>8</item>
-		<item>9</item>
-		<item>10</item>
-	</string-array>
-
-	<string-array name="echo_spacing_list_values">
-		<item>-1</item>
+	<string-array name="echo_spacing_list">
 		<item>5</item>
 		<item>6</item>
 		<item>7</item>
