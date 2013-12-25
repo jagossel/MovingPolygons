@@ -25,13 +25,14 @@ public class PreferencesActivity extends PreferenceActivity implements
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		addPreferencesFromResource(R.xml.preferences);
 
 		PreferenceManager preferencesManager = getPreferenceManager();
 		preferencesManager
 				.setSharedPreferencesName(MovingPolygonsService.SETTINGS_NAME);
 		preferencesManager.getSharedPreferences()
 				.registerOnSharedPreferenceChangeListener(this);
+
+		addPreferencesFromResource(R.xml.preferences);
 	}
 
 	@Override
