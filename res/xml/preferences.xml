@@ -1,0 +1,49 @@
+<!--
+Moving Polygons Live Wallpaper
+Copyright (C) 2013  LogicallyCreative.org
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+	<PreferenceCategory
+		android:title="@string/shape_category_title">
+		<ListPreference
+			android:key="polygon_point_count"
+			android:title="@string/point_count_title"
+			android:summary="@string/point_count_summary"
+			android:entries="@array/point_count_list_names"
+			android:entryValues="@array/point_count_list_values" />
+		<ListPreference
+			android:key="echoes_count"
+			android:title="@string/echo_count_title"
+			android:summary="@string/echo_count_summary"
+			android:entries="@array/echo_count_list_names"
+			android:entryValues="@array/echo_count_list_values" />
+		<ListPreference
+			android:key="echo_spacing"
+			android:title="@string/echo_spacing_title"
+			android:summary="@string/echo_spacing_summary"
+			android:entries="@array/echo_spacing_list_names"
+			android:entryValues="@array/echo_spacing_list_values" />
+	</PreferenceCategory>
+	<PreferenceCategory
+		android:title="@string/color_category_title">
+		<ListPreference
+			android:key="color_change_method"
+			android:title="@string/color_change_type_title"
+			android:summary="@string/color_change_type_summary"
+			android:entries="@array/color_changing_method_list_names"
+			android:entryValues="@array/color_changing_method_list_value" />
+	</PreferenceCategory>
+</PreferenceScreen>

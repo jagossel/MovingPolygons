@@ -1,0 +1,96 @@
+<!-- 
+Moving Polygons Live Wallpaper
+Copyright (C) 2013  LogicallyCreative.org
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<resources>
+	<string-array name="point_count_list_names">
+		<item>Random</item>
+		<item>3</item>
+		<item>4</item>
+		<item>5</item>
+		<item>6</item>
+		<item>7</item>
+		<item>8</item>
+	</string-array>
+
+	<string-array name="point_count_list_values">
+		<item>-1</item>
+		<item>3</item>
+		<item>4</item>
+		<item>5</item>
+		<item>6</item>
+		<item>7</item>
+		<item>8</item>
+	</string-array>
+
+	<string-array name="echo_count_list_names">
+		<item>No Echoes</item>
+		<item>Random</item>
+		<item>3</item>
+		<item>4</item>
+		<item>5</item>
+		<item>6</item>
+		<item>7</item>
+		<item>8</item>
+		<item>9</item>
+		<item>10</item>
+	</string-array>
+
+	<string-array name="echo_count_list_values">
+		<item>-2</item>
+		<item>-1</item>
+		<item>4</item>
+		<item>5</item>
+		<item>6</item>
+		<item>7</item>
+		<item>8</item>
+		<item>9</item>
+		<item>10</item>
+		<item>11</item>
+	</string-array>
+
+	<string-array name="echo_spacing_list_names">
+		<item>Random</item>
+		<item>5</item>
+		<item>6</item>
+		<item>7</item>
+		<item>8</item>
+		<item>9</item>
+		<item>10</item>
+	</string-array>
+
+	<string-array name="echo_spacing_list_values">
+		<item>-1</item>
+		<item>5</item>
+		<item>6</item>
+		<item>7</item>
+		<item>8</item>
+		<item>9</item>
+		<item>10</item>
+	</string-array>
+
+	<string-array name="color_changing_method_list_names">
+		<item>Smooth</item>
+		<item>Linear</item>
+		<item>Static</item>
+	</string-array>
+
+	<string-array name="color_changing_method_list_value">
+		<item>SineWave</item>
+		<item>SawtoothWave</item>
+		<item>Static</item>
+	</string-array>
+</resources>

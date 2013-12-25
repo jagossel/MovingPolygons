@@ -22,6 +22,7 @@ public class EngineData {
 	public static int screenWidth;
 	public static int screenHeight;
 
+	public static SettingsData settings;
 	public static Colorable colorManager;
 	public static Shapable drawingManager;
 }

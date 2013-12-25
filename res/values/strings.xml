@@ -16,5 +16,24 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 <resources>
-    <string name="app_name">Moving Polygons</string>
+	<string name="app_name">Moving Polygons</string>
+
+	<!-- Preferences -->
+	<string name="preferences_title">Settings</string>
+
+	<string name="shape_category_title">Shape</string>
+
+	<string name="point_count_title">Set Point Count</string>
+	<string name="point_count_summary">Specifies the number of points.</string>
+
+	<string name="echo_count_title">Set Echos Count</string>
+	<string name="echo_count_summary">Specifies the number of echoes.</string>
+
+	<string name="echo_spacing_title">Set Spacing</string>
+	<string name="echo_spacing_summary">Specifies the speacing between echoes.</string>
+
+	<string name="color_category_title">Color</string>
+
+	<string name="color_change_type_title">Color Chaning Method</string>
+	<string name="color_change_type_summary">Specifics how the color should change.</string>
 </resources>
