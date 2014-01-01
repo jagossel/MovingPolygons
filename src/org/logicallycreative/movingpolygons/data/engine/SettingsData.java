@@ -16,16 +16,13 @@
 package org.logicallycreative.movingpolygons.data.engine;
 
 import org.logicallycreative.movingpolygons.common.ColoringMethods;
+import org.logicallycreative.movingpolygons.common.DefaultSettings;
 import org.logicallycreative.movingpolygons.common.SettingNames;
 import org.logicallycreative.movingpolygons.util.RandomNumberUtility;
 
 import android.content.SharedPreferences;
 
 public class SettingsData {
-	private final String defaultPointCount = "3";
-	private final String defaultEchoCount = "5";
-	private final String defaultEchoSpacing = "5";
-
 	private final boolean addEchoes;
 	private final boolean setPointCount;
 	private final boolean setEchoCount;
@@ -36,42 +33,38 @@ public class SettingsData {
 	private final String coloringMethod;
 
 	public SettingsData(SharedPreferences settings) {
-		addEchoes = settings.getBoolean(SettingNames.addEchoes, true);
-		setPointCount = settings.getBoolean(SettingNames.setPointCount, false);
-		setEchoCount = settings.getBoolean(SettingNames.setEchoCount, false);
-		setEchoSpacing = settings
-				.getBoolean(SettingNames.setEchoSpacing, false);
+		addEchoes = settings.getBoolean(SettingNames.addEchoes,
+				DefaultSettings.addEchoes);
+		setPointCount = settings.getBoolean(SettingNames.setPointCount,
+				DefaultSettings.setPointCount);
+		setEchoCount = settings.getBoolean(SettingNames.setEchoCount,
+				DefaultSettings.setEchoCount);
+		setEchoSpacing = settings.getBoolean(SettingNames.setEchoSpacing,
+				DefaultSettings.setEchoSpacing);
 
 		if (setPointCount) {
-			pointCount = getSettingInteger(settings, SettingNames.pointCount,
-					defaultPointCount);
+			pointCount = settings.getInt(SettingNames.pointCount,
+					DefaultSettings.pointCount);
 		} else {
 			pointCount = 0;
 		}
 
 		if (addEchoes && setEchoCount) {
-			echoCount = getSettingInteger(settings, SettingNames.echoCount,
-					defaultEchoCount);
+			echoCount = settings.getInt(SettingNames.echoCount,
+					DefaultSettings.echoCount);
 		} else {
 			echoCount = 0;
 		}
 
 		if (addEchoes && setEchoSpacing) {
-			echoSpacing = getSettingInteger(settings, SettingNames.echoSpacing,
-					defaultEchoSpacing);
+			echoSpacing = settings.getInt(SettingNames.echoSpacing,
+					DefaultSettings.echoSpacing);
 		} else {
 			echoSpacing = 0;
 		}
 
 		coloringMethod = settings.getString(SettingNames.coloringMethod,
 				ColoringMethods.Sine);
-	}
-
-	private int getSettingInteger(SharedPreferences settings,
-			String settingName, String defaultValue) {
-		String settingValue = settings.getString(settingName, defaultValue);
-
-		return Integer.parseInt(settingValue);
 	}
 
 	public boolean getAddEchoes() {

@@ -1,4 +1,4 @@
-<!-- 
+<!--
 Moving Polygons Live Wallpaper
 Copyright (C) 2013  LogicallyCreative.org
 
@@ -15,16 +15,24 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
-<resources>
-	<string-array name="color_changing_method_list_names">
-		<item>Smooth</item>
-		<item>Linear</item>
-		<item>Static</item>
-	</string-array>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	android:gravity="center">
 
-	<string-array name="color_changing_method_list_value">
-		<item>SineWave</item>
-		<item>SawtoothWave</item>
-		<item>Static</item>
-	</string-array>
-</resources>
+	<TextView
+		android:id="@+id/seekbarValue"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:padding="10dp"
+		android:gravity="center" />
+
+	<SeekBar
+		android:id="@+id/seekbarWidget"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:padding="10dp" />
+
+</LinearLayout>

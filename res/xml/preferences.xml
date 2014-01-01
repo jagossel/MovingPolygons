@@ -22,12 +22,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 			android:key="specify_point_count"
 			android:title="@string/set_point_count_title"
 			android:defaultValue="false" />
-		<ListPreference
+		<org.logicallycreative.movingpolygons.widgets.PointCountSeekbarPreference
 			android:key="polygon_point_count"
 			android:title="@string/point_count_title"
 			android:summary="@string/point_count_summary"
-			android:entries="@array/point_count_list"
-			android:entryValues="@array/point_count_list"
 			android:dependency="specify_point_count" />
 	</PreferenceCategory>
 	<PreferenceCategory
@@ -41,24 +39,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 			android:title="@string/set_echo_count_title"
 			android:dependency="add_echoes"
 			android:defaultValue="false" />
-		<ListPreference
+		<org.logicallycreative.movingpolygons.widgets.EchoCountSeekbarPreference
 			android:key="echo_count"
 			android:title="@string/echo_count_title"
 			android:summary="@string/echo_count_summary"
-			android:entries="@array/echo_count_list"
-			android:entryValues="@array/echo_count_list"
 			android:dependency="specify_echo_count" />
 		<CheckBoxPreference
 			android:key="specify_echo_spacing"
 			android:title="@string/set_echo_spacing_title"
 			android:dependency="add_echoes"
 			android:defaultValue="false" />
-		<ListPreference
+		<org.logicallycreative.movingpolygons.widgets.EchoSpacingSeekbarPreference
 			android:key="echo_spacing"
 			android:title="@string/echo_spacing_title"
 			android:summary="@string/echo_spacing_summary"
-			android:entries="@array/echo_spacing_list"
-			android:entryValues="@array/echo_spacing_list"
 			android:dependency="specify_echo_spacing" />
 	</PreferenceCategory>
 	<PreferenceCategory
