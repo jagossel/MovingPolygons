@@ -17,7 +17,9 @@ package org.logicallycreative.movingpolygons;
 
 import org.logicallycreative.movingpolygons.data.engine.EngineData;
 import org.logicallycreative.movingpolygons.data.engine.SettingsData;
+import org.logicallycreative.movingpolygons.loaders.EngineLoader;
 
+import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.os.Handler;
@@ -28,12 +30,24 @@ import android.view.SurfaceHolder;
 import android.view.WindowManager;
 
 public class MovingPolygonsService extends WallpaperService {
+	public static final String SETTINGS_NAME = "MovingPolygonsSettings";
+
 	@Override
 	public Engine onCreateEngine() {
-		return new MovingPolygonsEngine();
+		SharedPreferences preferences = super.getSharedPreferences(
+				SETTINGS_NAME, 0);
+
+		Engine wallpaperEngine = new MovingPolygonsEngine(preferences);
+		SharedPreferences.OnSharedPreferenceChangeListener wallpaperEngineListener = (SharedPreferences.OnSharedPreferenceChangeListener) wallpaperEngine;
+
+		preferences
+				.registerOnSharedPreferenceChangeListener(wallpaperEngineListener);
+
+		return wallpaperEngine;
 	}
 
-	private class MovingPolygonsEngine extends Engine {
+	private class MovingPolygonsEngine extends Engine implements
+			SharedPreferences.OnSharedPreferenceChangeListener {
 		private static final int delayPostingInMilliseconds = 10;
 
 		private final Handler handler = new Handler();
@@ -45,6 +59,10 @@ public class MovingPolygonsService extends WallpaperService {
 		};
 
 		private boolean screenVisible;
+
+		public MovingPolygonsEngine(SharedPreferences preferences) {
+			initializeEngine(preferences);
+		}
 
 		@Override
 		public void onVisibilityChanged(boolean visible) {
@@ -77,6 +95,18 @@ public class MovingPolygonsService extends WallpaperService {
 			// TODO: Add in logic to keep the polygon...
 			// For now, just create a new polygon when changing the surface.
 			createPolygonManager();
+		}
+
+		@Override
+		public void onSharedPreferenceChanged(SharedPreferences preferences,
+				String key) {
+			initializeEngine(preferences);
+			createPolygonManager();
+		}
+
+		private void initializeEngine(SharedPreferences preferences) {
+			EngineData.settings = new SettingsData(preferences);
+			EngineData.engineLoader = new EngineLoader();
 		}
 
 		private void drawFrame() {
@@ -114,8 +144,9 @@ public class MovingPolygonsService extends WallpaperService {
 
 			EngineData.screenWidth = metrics.widthPixels;
 			EngineData.screenHeight = metrics.heightPixels;
-			EngineData.colorManager = SettingsData.getColorManager();
-			EngineData.drawingManager = SettingsData.getShapeManager();
+			EngineData.colorManager = EngineData.engineLoader.getColorManager();
+			EngineData.drawingManager = EngineData.engineLoader
+					.getShapeManager();
 		}
 	}
 }

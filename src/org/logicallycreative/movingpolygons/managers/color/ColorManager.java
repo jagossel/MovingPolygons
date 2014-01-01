@@ -15,7 +15,7 @@
 //along with this program.  If not, see <http://www.gnu.org/licenses/>.
 package org.logicallycreative.movingpolygons.managers.color;
 
-import org.logicallycreative.movingpolygons.data.engine.SettingsData;
+import org.logicallycreative.movingpolygons.data.engine.EngineData;
 
 import android.graphics.Paint;
 
@@ -24,14 +24,14 @@ public abstract class ColorManager implements Colorable {
 	protected final int maximumColorValue;
 	protected final Paint linePaint = new Paint();
 
-	protected int alphaChannel;
+	protected int alphaChannel = 255;
 	protected int redChannel;
 	protected int greenChannel;
 	protected int blueChannel;
 
 	public ColorManager() {
-		minimumColorValue = SettingsData.getMinimumColorValue();
-		maximumColorValue = SettingsData.getMaximumColorValue();
+		minimumColorValue = EngineData.settings.getMinimumColorValue();
+		maximumColorValue = EngineData.settings.getMaximumColorValue();
 
 		linePaint.setAntiAlias(true);
 		linePaint.setStrokeCap(Paint.Cap.SQUARE);
@@ -39,9 +39,9 @@ public abstract class ColorManager implements Colorable {
 	}
 
 	protected void setRandomColorValues() {
-		redChannel = SettingsData.getRedValue();
-		greenChannel = SettingsData.getGreeValue();
-		blueChannel = SettingsData.getBlueValue();
+		redChannel = EngineData.settings.getRedValue();
+		greenChannel = EngineData.settings.getGreeValue();
+		blueChannel = EngineData.settings.getBlueValue();
 	}
 
 	@Override

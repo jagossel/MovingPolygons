@@ -15,6 +15,24 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
-<wallpaper xmlns:android="http://schemas.android.com/apk/res/android"
-	android:thumbnail="@drawable/ic_launcher"
-	android:settingsActivity="org.logicallycreative.movingpolygons.PreferencesActivity" />
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	android:gravity="center">
+
+	<TextView
+		android:id="@+id/seekbarValue"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:padding="10dp"
+		android:gravity="center" />
+
+	<SeekBar
+		android:id="@+id/seekbarWidget"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:padding="10dp" />
+
+</LinearLayout>

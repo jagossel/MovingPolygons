@@ -13,18 +13,14 @@
 //
 //You should have received a copy of the GNU General Public License
 //along with this program.  If not, see <http://www.gnu.org/licenses/>.
-package org.logicallycreative.movingpolygons.data.engine;
+package org.logicallycreative.movingpolygons.common;
 
-import org.logicallycreative.movingpolygons.loaders.EngineLoader;
-import org.logicallycreative.movingpolygons.managers.color.Colorable;
-import org.logicallycreative.movingpolygons.managers.drawing.Shapable;
-
-public class EngineData {
-	public static int screenWidth;
-	public static int screenHeight;
-
-	public static SettingsData settings;
-	public static EngineLoader engineLoader;
-	public static Colorable colorManager;
-	public static Shapable drawingManager;
+public class DefaultSettings {
+	public static final boolean setPointCount = false;
+	public static final int pointCount = 3;
+	public static final boolean addEchoes = true;
+	public static final boolean setEchoCount = false;
+	public static final int echoCount = 5;
+	public static final boolean setEchoSpacing = false;
+	public static final int echoSpacing = 5;
 }

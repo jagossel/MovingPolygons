@@ -48,6 +48,11 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 
         </service>
 
+        <activity
+            android:label="@string/preferences_title"
+            android:name="org.logicallycreative.movingpolygons.PreferencesActivity"
+            android:exported="true"
+            android:icon="@drawable/ic_launcher" />
     </application>
 
 </manifest>
