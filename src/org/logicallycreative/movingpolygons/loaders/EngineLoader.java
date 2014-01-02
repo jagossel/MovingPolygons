@@ -41,9 +41,9 @@ public class EngineLoader {
 	public Colorable getColorManager() {
 		String coloringMethod = settings.getColoringMethod();
 
-		if (coloringMethod == ColoringMethods.Sawtooth) {
+		if (coloringMethod.equalsIgnoreCase(ColoringMethods.Sawtooth)) {
 			return new SawtoothWave();
-		} else if (coloringMethod == ColoringMethods.Static) {
+		} else if (coloringMethod.equalsIgnoreCase(ColoringMethods.Static)) {
 			return new StaticColor();
 		} else {
 			return new SineWave();

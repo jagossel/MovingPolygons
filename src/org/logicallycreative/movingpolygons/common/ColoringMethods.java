@@ -18,5 +18,5 @@ package org.logicallycreative.movingpolygons.common;
 public class ColoringMethods {
 	public static final String Sine = "SineWave";
 	public static final String Sawtooth = "SawtoothWave";
-	public static final String Static = "StaticColor";
+	public static final String Static = "Static";
 }
