@@ -49,7 +49,7 @@ public class MovingPolygonsService extends WallpaperService {
 
 	private class MovingPolygonsEngine extends Engine implements
 			SharedPreferences.OnSharedPreferenceChangeListener {
-		private static final int delayPostingInMilliseconds = 33;
+		private static final int delayPostingInMilliseconds = 20;
 
 		private final Handler handler = new Handler();
 		private final Runnable serviceRunner = new Runnable() {
