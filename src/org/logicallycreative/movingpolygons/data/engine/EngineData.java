@@ -16,15 +16,17 @@
 package org.logicallycreative.movingpolygons.data.engine;
 
 import org.logicallycreative.movingpolygons.loaders.EngineLoader;
-import org.logicallycreative.movingpolygons.managers.color.Colorable;
 import org.logicallycreative.movingpolygons.managers.drawing.Shapable;
 
 public class EngineData {
 	public static int screenWidth;
 	public static int screenHeight;
 
+	public static int redColorValue;
+	public static int greenColorValue;
+	public static int blueColorValue;
+
 	public static SettingsData settings;
 	public static EngineLoader engineLoader;
-	public static Colorable colorManager;
 	public static Shapable drawingManager;
 }

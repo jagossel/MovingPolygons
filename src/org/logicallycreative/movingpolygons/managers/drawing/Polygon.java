@@ -20,17 +20,29 @@ import java.util.List;
 import org.logicallycreative.movingpolygons.data.engine.EngineData;
 import org.logicallycreative.movingpolygons.data.shape.DeltaPoint;
 import org.logicallycreative.movingpolygons.data.shape.Shape;
+import org.logicallycreative.movingpolygons.managers.color.Colorable;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
 
 public class Polygon implements Shapable {
 	private final Shape polygon = new Shape();
+	private final Colorable colorManager;
+
+	public Polygon(int alphaValue) {
+		colorManager = EngineData.engineLoader.getColorManager();
+		colorManager.setAlpha(alphaValue);
+	}
 
 	@Override
 	public void addPoints(List<DeltaPoint> points) {
 		for (DeltaPoint point : points)
 			polygon.addPoint(point);
+	}
+
+	@Override
+	public void changeColors() {
+		colorManager.changeColors();
 	}
 
 	@Override
@@ -69,7 +81,7 @@ public class Polygon implements Shapable {
 		List<DeltaPoint> points = polygon.getPoints();
 		int pointsCount = points.size();
 
-		Paint linePaint = EngineData.colorManager.getLinePaint();
+		Paint linePaint = colorManager.getLinePaint();
 		for (int i = 0; i < pointsCount; i++) {
 			int startIndex = i;
 			DeltaPoint startingPoint = points.get(startIndex);

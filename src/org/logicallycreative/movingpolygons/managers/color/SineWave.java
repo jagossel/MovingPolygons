@@ -15,7 +15,7 @@
 //along with this program.  If not, see <http://www.gnu.org/licenses/>.
 package org.logicallycreative.movingpolygons.managers.color;
 
-import org.logicallycreative.movingpolygons.util.RandomNumberUtility;
+import org.logicallycreative.movingpolygons.data.engine.EngineData;
 
 public class SineWave extends ColorManager {
 	private final float precisionIncrement = 0.01f;
@@ -37,12 +37,13 @@ public class SineWave extends ColorManager {
 		sineRange = (super.maximumColorValue - super.minimumColorValue) / 2;
 		sineCenter = sineRange + super.minimumColorValue;
 
-		redSinePosition = RandomNumberUtility.getRandomFloat(sinePositionStart,
-				sinePositionEnd, precisionIncrement);
-		greenSinePosition = RandomNumberUtility.getRandomFloat(
-				sinePositionStart, sinePositionEnd, precisionIncrement);
-		blueSinePosition = RandomNumberUtility.getRandomFloat(
-				sinePositionStart, sinePositionEnd, precisionIncrement);
+		redSinePosition = calculateSineStartPosition(EngineData.redColorValue);
+		greenSinePosition = calculateSineStartPosition(EngineData.greenColorValue);
+		blueSinePosition = calculateSineStartPosition(EngineData.blueColorValue);
+	}
+
+	private float calculateSineStartPosition(int colorValue) {
+		return (float) Math.sin((colorValue - sineCenter) / sineRange);
 	}
 
 	@Override
@@ -62,9 +63,11 @@ public class SineWave extends ColorManager {
 			blueSinePosition = sinePositionStart;
 		}
 
-		super.redChannel = calculateColorValue(redSinePosition);
-		super.greenChannel = calculateColorValue(greenSinePosition);
-		super.blueChannel = calculateColorValue(blueSinePosition);
+		EngineData.redColorValue = calculateColorValue(redSinePosition);
+		EngineData.greenColorValue = calculateColorValue(greenSinePosition);
+		EngineData.blueColorValue = calculateColorValue(blueSinePosition);
+
+		super.setLinePaintColor();
 	}
 
 	private int calculateColorValue(float sinePosition) {

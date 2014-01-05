@@ -17,6 +17,7 @@ package org.logicallycreative.movingpolygons.managers.color;
 
 import org.logicallycreative.movingpolygons.data.engine.EngineData;
 
+import android.graphics.Color;
 import android.graphics.Paint;
 
 public abstract class ColorManager implements Colorable {
@@ -25,9 +26,6 @@ public abstract class ColorManager implements Colorable {
 	protected final Paint linePaint = new Paint();
 
 	protected int alphaChannel = 255;
-	protected int redChannel;
-	protected int greenChannel;
-	protected int blueChannel;
 
 	public ColorManager() {
 		minimumColorValue = EngineData.settings.getMinimumColorValue();
@@ -35,13 +33,7 @@ public abstract class ColorManager implements Colorable {
 
 		linePaint.setAntiAlias(true);
 		linePaint.setStrokeCap(Paint.Cap.SQUARE);
-		linePaint.setStrokeWidth(1f);
-	}
-
-	protected void setRandomColorValues() {
-		redChannel = EngineData.settings.getRedValue();
-		greenChannel = EngineData.settings.getGreeValue();
-		blueChannel = EngineData.settings.getBlueValue();
+		linePaint.setStrokeWidth(1.5f);
 	}
 
 	@Override
@@ -54,8 +46,11 @@ public abstract class ColorManager implements Colorable {
 
 	@Override
 	public final Paint getLinePaint() {
-		linePaint.setARGB(alphaChannel, redChannel, greenChannel, blueChannel);
-
 		return linePaint;
+	}
+
+	protected void setLinePaintColor() {
+		linePaint.setColor(Color.argb(alphaChannel, EngineData.redColorValue,
+				EngineData.greenColorValue, EngineData.blueColorValue));
 	}
 }

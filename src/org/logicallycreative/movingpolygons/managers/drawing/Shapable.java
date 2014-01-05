@@ -24,6 +24,8 @@ import android.graphics.Canvas;
 public interface Shapable {
 	void addPoints(List<DeltaPoint> points);
 
+	void changeColors();
+
 	void movePoints();
 
 	void drawPoints(Canvas canvas);

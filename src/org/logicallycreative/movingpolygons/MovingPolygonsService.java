@@ -18,6 +18,7 @@ package org.logicallycreative.movingpolygons;
 import org.logicallycreative.movingpolygons.data.engine.EngineData;
 import org.logicallycreative.movingpolygons.data.engine.SettingsData;
 import org.logicallycreative.movingpolygons.loaders.EngineLoader;
+import org.logicallycreative.movingpolygons.util.RandomNumberUtility;
 
 import android.content.SharedPreferences;
 import android.graphics.Canvas;
@@ -48,7 +49,7 @@ public class MovingPolygonsService extends WallpaperService {
 
 	private class MovingPolygonsEngine extends Engine implements
 			SharedPreferences.OnSharedPreferenceChangeListener {
-		private static final int delayPostingInMilliseconds = 10;
+		private static final int delayPostingInMilliseconds = 33;
 
 		private final Handler handler = new Handler();
 		private final Runnable serviceRunner = new Runnable() {
@@ -107,19 +108,35 @@ public class MovingPolygonsService extends WallpaperService {
 		private void initializeEngine(SharedPreferences preferences) {
 			EngineData.settings = new SettingsData(preferences);
 			EngineData.engineLoader = new EngineLoader();
+
+			setColorValues();
+		}
+
+		private void setColorValues() {
+			int minimumColorValue = EngineData.settings.getMinimumColorValue();
+			int maximumColorValue = EngineData.settings.getMaximumColorValue();
+
+			EngineData.redColorValue = RandomNumberUtility.getRandomInteger(
+					minimumColorValue, maximumColorValue);
+
+			EngineData.greenColorValue = RandomNumberUtility.getRandomInteger(
+					minimumColorValue, maximumColorValue);
+
+			EngineData.blueColorValue = RandomNumberUtility.getRandomInteger(
+					minimumColorValue, maximumColorValue);
 		}
 
 		private void drawFrame() {
 			SurfaceHolder surface = getSurfaceHolder();
 			Canvas canvas = null;
 
+			EngineData.drawingManager.changeColors();
+			EngineData.drawingManager.movePoints();
 			try {
 				canvas = surface.lockCanvas();
 				canvas.save();
-				canvas.drawColor(Color.argb(255, 0, 0, 0));
 
-				EngineData.colorManager.changeColors();
-				EngineData.drawingManager.movePoints();
+				canvas.drawColor(Color.argb(255, 0, 0, 0));
 				EngineData.drawingManager.drawPoints(canvas);
 
 				canvas.restore();
@@ -144,7 +161,6 @@ public class MovingPolygonsService extends WallpaperService {
 
 			EngineData.screenWidth = metrics.widthPixels;
 			EngineData.screenHeight = metrics.heightPixels;
-			EngineData.colorManager = EngineData.engineLoader.getColorManager();
 			EngineData.drawingManager = EngineData.engineLoader
 					.getShapeManager();
 		}

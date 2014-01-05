@@ -89,6 +89,6 @@ public class EngineLoader {
 	}
 
 	private Shapable getPolygonManager() {
-		return new Polygon();
+		return new Polygon(255);
 	}
 }

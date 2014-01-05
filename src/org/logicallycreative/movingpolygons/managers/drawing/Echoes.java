@@ -31,8 +31,17 @@ public class Echoes implements Shapable {
 	public Echoes(int numberOfEchoes, int echoSpace) {
 		echoSpacing = echoSpace;
 
-		for (int i = 0; i < numberOfEchoes; i++)
-			polygons.add(new Polygon());
+		int minimumColorValue = EngineData.settings.getMinimumColorValue();
+		int maximumColorValue = EngineData.settings.getMaximumColorValue();
+		int alphaRange = maximumColorValue - minimumColorValue;
+		int alphaScalingFactor = alphaRange / numberOfEchoes;
+
+		for (int i = 0; i < numberOfEchoes; i++) {
+			int alphaColorValue = ((numberOfEchoes - i) * alphaScalingFactor)
+					+ minimumColorValue;
+
+			polygons.add(new Polygon(alphaColorValue));
+		}
 	}
 
 	@Override
@@ -64,6 +73,12 @@ public class Echoes implements Shapable {
 	}
 
 	@Override
+	public void changeColors() {
+		for (Polygon polygon : polygons)
+			polygon.changeColors();
+	}
+
+	@Override
 	public void movePoints() {
 		for (Polygon polygon : polygons)
 			polygon.movePoints();
@@ -71,15 +86,7 @@ public class Echoes implements Shapable {
 
 	@Override
 	public void drawPoints(Canvas canvas) {
-		int echoCount = polygons.size();
-		int scale = 192 / echoCount;
-
-		for (int i = 0; i < echoCount; i++) {
-			Polygon polygon = polygons.get(i);
-			int alpha = ((echoCount - i) * scale) + 63;
-
-			EngineData.colorManager.setAlpha(alpha);
+		for (Polygon polygon : polygons)
 			polygon.drawPoints(canvas);
-		}
 	}
 }

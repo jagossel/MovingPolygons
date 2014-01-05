@@ -15,43 +15,42 @@
 //along with this program.  If not, see <http://www.gnu.org/licenses/>.
 package org.logicallycreative.movingpolygons.managers.color;
 
+import org.logicallycreative.movingpolygons.data.engine.EngineData;
+
 public class SawtoothWave extends ColorManager {
 	private int redIncrement = 1;
 	private int greenIncrement = 1;
 	private int blueIncrement = 1;
 
-	public SawtoothWave() {
-		super();
-		super.setRandomColorValues();
-	}
-
 	@Override
 	public void changeColors() {
-		super.redChannel += redIncrement;
-		if (super.redChannel >= super.maximumColorValue) {
-			super.redChannel = super.maximumColorValue;
+		EngineData.redColorValue += redIncrement;
+		if (EngineData.redColorValue >= super.maximumColorValue) {
+			EngineData.redColorValue = super.maximumColorValue;
 			redIncrement *= -1;
-		} else if (super.redChannel <= super.minimumColorValue) {
-			super.redChannel = super.minimumColorValue;
+		} else if (EngineData.redColorValue <= super.minimumColorValue) {
+			EngineData.redColorValue = super.minimumColorValue;
 			redIncrement *= -1;
 		}
 
-		super.greenChannel += greenIncrement;
-		if (super.greenChannel >= super.maximumColorValue) {
-			super.greenChannel = super.maximumColorValue;
+		EngineData.greenColorValue += greenIncrement;
+		if (EngineData.greenColorValue >= super.maximumColorValue) {
+			EngineData.greenColorValue = super.maximumColorValue;
 			greenIncrement *= -1;
-		} else if (super.greenChannel <= super.minimumColorValue) {
-			super.greenChannel = super.minimumColorValue;
+		} else if (EngineData.greenColorValue <= super.minimumColorValue) {
+			EngineData.greenColorValue = super.minimumColorValue;
 			greenIncrement *= -1;
 		}
 
-		super.blueChannel += blueIncrement;
-		if (super.blueChannel >= super.maximumColorValue) {
-			super.blueChannel = super.maximumColorValue;
+		EngineData.blueColorValue += blueIncrement;
+		if (EngineData.blueColorValue >= super.maximumColorValue) {
+			EngineData.blueColorValue = super.maximumColorValue;
 			blueIncrement *= -1;
-		} else if (super.blueChannel <= super.minimumColorValue) {
-			super.blueChannel = super.minimumColorValue;
+		} else if (EngineData.blueColorValue <= super.minimumColorValue) {
+			EngineData.blueColorValue = super.minimumColorValue;
 			blueIncrement *= -1;
 		}
+
+		super.setLinePaintColor();
 	}
 }
