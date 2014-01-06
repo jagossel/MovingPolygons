@@ -20,18 +20,24 @@ import java.util.List;
 import org.logicallycreative.movingpolygons.data.engine.EngineData;
 import org.logicallycreative.movingpolygons.data.shape.DeltaPoint;
 import org.logicallycreative.movingpolygons.data.shape.Shape;
+import org.logicallycreative.movingpolygons.data.shape.ShapeColor;
 import org.logicallycreative.movingpolygons.managers.color.Colorable;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 
 public class Polygon implements Shapable {
 	private final Shape polygon = new Shape();
-	private final Colorable colorManager;
+	private final Paint linePaint = new Paint();
+	private final int alpha;
 
 	public Polygon(int alphaValue) {
-		colorManager = EngineData.engineLoader.getColorManager();
-		colorManager.setAlpha(alphaValue);
+		alpha = alphaValue;
+		
+		linePaint.setAntiAlias(true);
+		linePaint.setStrokeCap(Paint.Cap.SQUARE);
+		linePaint.setStrokeWidth(1.5f);
 	}
 
 	@Override
@@ -41,8 +47,9 @@ public class Polygon implements Shapable {
 	}
 
 	@Override
-	public void changeColors() {
-		colorManager.changeColors();
+	public void applyColorChange() {
+		ShapeColor color = EngineData.colorManager.getColor();
+		linePaint.setColor(Color.argb(alpha, color.red, color.green, color.blue));
 	}
 
 	@Override
@@ -81,7 +88,6 @@ public class Polygon implements Shapable {
 		List<DeltaPoint> points = polygon.getPoints();
 		int pointsCount = points.size();
 
-		Paint linePaint = colorManager.getLinePaint();
 		for (int i = 0; i < pointsCount; i++) {
 			int startIndex = i;
 			DeltaPoint startingPoint = points.get(startIndex);

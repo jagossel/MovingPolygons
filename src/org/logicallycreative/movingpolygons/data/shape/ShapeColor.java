@@ -13,14 +13,10 @@
 //
 //You should have received a copy of the GNU General Public License
 //along with this program.  If not, see <http://www.gnu.org/licenses/>.
-package org.logicallycreative.movingpolygons.managers.color;
+package org.logicallycreative.movingpolygons.data.shape;
 
-import org.logicallycreative.movingpolygons.data.shape.ShapeColor;
-
-import android.graphics.Paint;
-
-public interface Colorable {
-	public void changeColors();
-	
-	public ShapeColor getColor();
+public class ShapeColor {
+	public int red;
+	public int green;
+	public int blue;
 }

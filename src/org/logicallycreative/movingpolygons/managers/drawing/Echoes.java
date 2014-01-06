@@ -19,13 +19,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.logicallycreative.movingpolygons.data.engine.EngineData;
+import org.logicallycreative.movingpolygons.managers.color.Colorable;
 import org.logicallycreative.movingpolygons.data.shape.DeltaPoint;
 
 import android.graphics.Canvas;
 
 public class Echoes implements Shapable {
 	private final List<Polygon> polygons = new ArrayList<Polygon>();
-
 	private final int echoSpacing;
 
 	public Echoes(int numberOfEchoes, int echoSpace) {
@@ -73,9 +73,9 @@ public class Echoes implements Shapable {
 	}
 
 	@Override
-	public void changeColors() {
+	public void applyColorChange() {
 		for (Polygon polygon : polygons)
-			polygon.changeColors();
+			polygon.applyColorChange();
 	}
 
 	@Override

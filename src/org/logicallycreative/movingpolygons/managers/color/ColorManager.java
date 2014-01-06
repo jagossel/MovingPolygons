@@ -16,41 +16,32 @@
 package org.logicallycreative.movingpolygons.managers.color;
 
 import org.logicallycreative.movingpolygons.data.engine.EngineData;
+import org.logicallycreative.movingpolygons.data.shape.ShapeColor;
+import org.logicallycreative.movingpolygons.util.RandomNumberUtility;
 
-import android.graphics.Color;
 import android.graphics.Paint;
 
 public abstract class ColorManager implements Colorable {
 	protected final int minimumColorValue;
 	protected final int maximumColorValue;
-	protected final Paint linePaint = new Paint();
-
-	protected int alphaChannel = 255;
+	protected final ShapeColor currentColor = new ShapeColor();
 
 	public ColorManager() {
 		minimumColorValue = EngineData.settings.getMinimumColorValue();
 		maximumColorValue = EngineData.settings.getMaximumColorValue();
-
-		linePaint.setAntiAlias(true);
-		linePaint.setStrokeCap(Paint.Cap.SQUARE);
-		linePaint.setStrokeWidth(1.5f);
 	}
 
 	@Override
 	public abstract void changeColors();
-
+	
 	@Override
-	public void setAlpha(int alpha) {
-		alphaChannel = alpha;
+	public ShapeColor getColor() {
+		return currentColor;
 	}
-
-	@Override
-	public final Paint getLinePaint() {
-		return linePaint;
-	}
-
-	protected void setLinePaintColor() {
-		linePaint.setColor(Color.argb(alphaChannel, EngineData.redColorValue,
-				EngineData.greenColorValue, EngineData.blueColorValue));
+	
+	protected void setRandomColorValues() {
+		currentColor.red = RandomNumberUtility.getRandomInteger(minimumColorValue, maximumColorValue);
+		currentColor.green = RandomNumberUtility.getRandomInteger(minimumColorValue, maximumColorValue);
+		currentColor.blue = RandomNumberUtility.getRandomInteger(minimumColorValue, maximumColorValue);
 	}
 }

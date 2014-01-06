@@ -108,30 +108,17 @@ public class MovingPolygonsService extends WallpaperService {
 		private void initializeEngine(SharedPreferences preferences) {
 			EngineData.settings = new SettingsData(preferences);
 			EngineData.engineLoader = new EngineLoader();
-
-			setColorValues();
-		}
-
-		private void setColorValues() {
-			int minimumColorValue = EngineData.settings.getMinimumColorValue();
-			int maximumColorValue = EngineData.settings.getMaximumColorValue();
-
-			EngineData.redColorValue = RandomNumberUtility.getRandomInteger(
-					minimumColorValue, maximumColorValue);
-
-			EngineData.greenColorValue = RandomNumberUtility.getRandomInteger(
-					minimumColorValue, maximumColorValue);
-
-			EngineData.blueColorValue = RandomNumberUtility.getRandomInteger(
-					minimumColorValue, maximumColorValue);
+			EngineData.colorManager = EngineData.engineLoader.getColorManager();
 		}
 
 		private void drawFrame() {
 			SurfaceHolder surface = getSurfaceHolder();
 			Canvas canvas = null;
 
-			EngineData.drawingManager.changeColors();
+			EngineData.colorManager.changeColors();
+			EngineData.drawingManager.applyColorChange();
 			EngineData.drawingManager.movePoints();
+			
 			try {
 				canvas = surface.lockCanvas();
 				canvas.save();

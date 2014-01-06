@@ -21,36 +21,40 @@ public class SawtoothWave extends ColorManager {
 	private int redIncrement = 1;
 	private int greenIncrement = 1;
 	private int blueIncrement = 1;
+	
+	public SawtoothWave() {
+		super();
+		
+		super.setRandomColorValues();
+	}
 
 	@Override
 	public void changeColors() {
-		EngineData.redColorValue += redIncrement;
-		if (EngineData.redColorValue >= super.maximumColorValue) {
-			EngineData.redColorValue = super.maximumColorValue;
+		super.currentColor.red += redIncrement;
+		if (super.currentColor.red >= super.maximumColorValue) {
+			super.currentColor.red = super.maximumColorValue;
 			redIncrement *= -1;
-		} else if (EngineData.redColorValue <= super.minimumColorValue) {
-			EngineData.redColorValue = super.minimumColorValue;
+		} else if (super.currentColor.red <= super.minimumColorValue) {
+			super.currentColor.red = super.minimumColorValue;
 			redIncrement *= -1;
 		}
 
-		EngineData.greenColorValue += greenIncrement;
-		if (EngineData.greenColorValue >= super.maximumColorValue) {
-			EngineData.greenColorValue = super.maximumColorValue;
+		super.currentColor.green += greenIncrement;
+		if (super.currentColor.green >= super.maximumColorValue) {
+			super.currentColor.green = super.maximumColorValue;
 			greenIncrement *= -1;
-		} else if (EngineData.greenColorValue <= super.minimumColorValue) {
-			EngineData.greenColorValue = super.minimumColorValue;
+		} else if (super.currentColor.green <= super.minimumColorValue) {
+			super.currentColor.green = super.minimumColorValue;
 			greenIncrement *= -1;
 		}
 
-		EngineData.blueColorValue += blueIncrement;
-		if (EngineData.blueColorValue >= super.maximumColorValue) {
-			EngineData.blueColorValue = super.maximumColorValue;
+		super.currentColor.blue += blueIncrement;
+		if (super.currentColor.blue >= super.maximumColorValue) {
+			super.currentColor.blue = super.maximumColorValue;
 			blueIncrement *= -1;
-		} else if (EngineData.blueColorValue <= super.minimumColorValue) {
-			EngineData.blueColorValue = super.minimumColorValue;
+		} else if (super.currentColor.blue <= super.minimumColorValue) {
+			super.currentColor.blue = super.minimumColorValue;
 			blueIncrement *= -1;
 		}
-
-		super.setLinePaintColor();
 	}
 }

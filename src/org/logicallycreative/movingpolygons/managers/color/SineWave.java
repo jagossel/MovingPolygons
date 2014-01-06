@@ -16,6 +16,7 @@
 package org.logicallycreative.movingpolygons.managers.color;
 
 import org.logicallycreative.movingpolygons.data.engine.EngineData;
+import org.logicallycreative.movingpolygons.util.*;
 
 public class SineWave extends ColorManager {
 	private final float precisionIncrement = 0.01f;
@@ -37,13 +38,9 @@ public class SineWave extends ColorManager {
 		sineRange = (super.maximumColorValue - super.minimumColorValue) / 2;
 		sineCenter = sineRange + super.minimumColorValue;
 
-		redSinePosition = calculateSineStartPosition(EngineData.redColorValue);
-		greenSinePosition = calculateSineStartPosition(EngineData.greenColorValue);
-		blueSinePosition = calculateSineStartPosition(EngineData.blueColorValue);
-	}
-
-	private float calculateSineStartPosition(int colorValue) {
-		return (float) Math.sin((colorValue - sineCenter) / sineRange);
+		redSinePosition = RandomNumberUtility.getRandomFloat(sinePositionStart, sinePositionEnd, precisionIncrement);
+		greenSinePosition = RandomNumberUtility.getRandomFloat(sinePositionStart, sinePositionEnd, precisionIncrement);
+		blueSinePosition = RandomNumberUtility.getRandomFloat(sinePositionStart, sinePositionEnd, precisionIncrement);
 	}
 
 	@Override
@@ -63,11 +60,9 @@ public class SineWave extends ColorManager {
 			blueSinePosition = sinePositionStart;
 		}
 
-		EngineData.redColorValue = calculateColorValue(redSinePosition);
-		EngineData.greenColorValue = calculateColorValue(greenSinePosition);
-		EngineData.blueColorValue = calculateColorValue(blueSinePosition);
-
-		super.setLinePaintColor();
+		super.currentColor.red = calculateColorValue(redSinePosition);
+		super.currentColor.green = calculateColorValue(greenSinePosition);
+		super.currentColor.blue = calculateColorValue(blueSinePosition);
 	}
 
 	private int calculateColorValue(float sinePosition) {
