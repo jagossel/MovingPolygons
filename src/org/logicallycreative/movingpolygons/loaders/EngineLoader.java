@@ -68,14 +68,22 @@ public class EngineLoader {
 	private List<DeltaPoint> createStartingPoints() {
 		List<DeltaPoint> startingPoints = new ArrayList<DeltaPoint>();
 
+		int echoCount = EngineData.settings.getEchoCount();
+		int echoSpacing = EngineData.settings.getEchoSpacing();
+		int echoDifference = echoCount * echoSpacing;
+
+		int minimumX = echoDifference;
+		int minimumY = echoDifference;
+
+		int maximumX = EngineData.screenWidth - echoDifference;
+		int maximumY = EngineData.screenHeight - echoDifference;
+
 		int numberOfSides = settings.getPointCount();
 		for (int i = 0; i < numberOfSides; i++) {
-			int xCoordinate = RandomNumberUtility.getRandomInteger(0,
-					EngineData.screenWidth);
-			int yCoordinate = RandomNumberUtility.getRandomInteger(0,
-					EngineData.screenHeight);
+			int x = RandomNumberUtility.getRandomInteger(minimumX, maximumX);
+			int y = RandomNumberUtility.getRandomInteger(minimumY, maximumY);
 
-			startingPoints.add(new DeltaPoint(xCoordinate, yCoordinate, 1, 1));
+			startingPoints.add(new DeltaPoint(x, y, 1, 1));
 		}
 
 		return startingPoints;
