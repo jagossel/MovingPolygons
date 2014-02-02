@@ -18,7 +18,6 @@ package org.logicallycreative.movingpolygons;
 import org.logicallycreative.movingpolygons.data.engine.EngineData;
 import org.logicallycreative.movingpolygons.data.engine.SettingsData;
 import org.logicallycreative.movingpolygons.loaders.EngineLoader;
-import org.logicallycreative.movingpolygons.util.RandomNumberUtility;
 
 import android.content.SharedPreferences;
 import android.graphics.Canvas;
@@ -118,7 +117,7 @@ public class MovingPolygonsService extends WallpaperService {
 			EngineData.colorManager.changeColors();
 			EngineData.drawingManager.applyColorChange();
 			EngineData.drawingManager.movePoints();
-			
+
 			try {
 				canvas = surface.lockCanvas();
 				canvas.save();

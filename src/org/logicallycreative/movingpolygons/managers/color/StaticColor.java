@@ -19,7 +19,7 @@ public class StaticColor extends ColorManager {
 
 	public StaticColor() {
 		super();
-		
+
 		super.setRandomColorValues();
 	}
 

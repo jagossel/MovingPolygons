@@ -21,7 +21,6 @@ import org.logicallycreative.movingpolygons.data.engine.EngineData;
 import org.logicallycreative.movingpolygons.data.shape.DeltaPoint;
 import org.logicallycreative.movingpolygons.data.shape.Shape;
 import org.logicallycreative.movingpolygons.data.shape.ShapeColor;
-import org.logicallycreative.movingpolygons.managers.color.Colorable;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -34,7 +33,7 @@ public class Polygon implements Shapable {
 
 	public Polygon(int alphaValue) {
 		alpha = alphaValue;
-		
+
 		linePaint.setAntiAlias(true);
 		linePaint.setStrokeCap(Paint.Cap.SQUARE);
 		linePaint.setStrokeWidth(1.5f);
@@ -49,7 +48,8 @@ public class Polygon implements Shapable {
 	@Override
 	public void applyColorChange() {
 		ShapeColor color = EngineData.colorManager.getColor();
-		linePaint.setColor(Color.argb(alpha, color.red, color.green, color.blue));
+		linePaint.setColor(Color
+				.argb(alpha, color.red, color.green, color.blue));
 	}
 
 	@Override

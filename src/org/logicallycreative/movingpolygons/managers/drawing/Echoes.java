@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.logicallycreative.movingpolygons.data.engine.EngineData;
-import org.logicallycreative.movingpolygons.managers.color.Colorable;
 import org.logicallycreative.movingpolygons.data.shape.DeltaPoint;
 
 import android.graphics.Canvas;

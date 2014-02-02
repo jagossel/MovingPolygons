@@ -15,16 +15,14 @@
 //along with this program.  If not, see <http://www.gnu.org/licenses/>.
 package org.logicallycreative.movingpolygons.managers.color;
 
-import org.logicallycreative.movingpolygons.data.engine.EngineData;
-
 public class SawtoothWave extends ColorManager {
 	private int redIncrement = 1;
 	private int greenIncrement = 1;
 	private int blueIncrement = 1;
-	
+
 	public SawtoothWave() {
 		super();
-		
+
 		super.setRandomColorValues();
 	}
 

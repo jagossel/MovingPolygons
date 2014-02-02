@@ -19,8 +19,6 @@ import org.logicallycreative.movingpolygons.data.engine.EngineData;
 import org.logicallycreative.movingpolygons.data.shape.ShapeColor;
 import org.logicallycreative.movingpolygons.util.RandomNumberUtility;
 
-import android.graphics.Paint;
-
 public abstract class ColorManager implements Colorable {
 	protected final int minimumColorValue;
 	protected final int maximumColorValue;
@@ -33,15 +31,18 @@ public abstract class ColorManager implements Colorable {
 
 	@Override
 	public abstract void changeColors();
-	
+
 	@Override
 	public ShapeColor getColor() {
 		return currentColor;
 	}
-	
+
 	protected void setRandomColorValues() {
-		currentColor.red = RandomNumberUtility.getRandomInteger(minimumColorValue, maximumColorValue);
-		currentColor.green = RandomNumberUtility.getRandomInteger(minimumColorValue, maximumColorValue);
-		currentColor.blue = RandomNumberUtility.getRandomInteger(minimumColorValue, maximumColorValue);
+		currentColor.red = RandomNumberUtility.getRandomInteger(
+				minimumColorValue, maximumColorValue);
+		currentColor.green = RandomNumberUtility.getRandomInteger(
+				minimumColorValue, maximumColorValue);
+		currentColor.blue = RandomNumberUtility.getRandomInteger(
+				minimumColorValue, maximumColorValue);
 	}
 }

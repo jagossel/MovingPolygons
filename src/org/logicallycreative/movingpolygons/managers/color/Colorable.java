@@ -17,10 +17,8 @@ package org.logicallycreative.movingpolygons.managers.color;
 
 import org.logicallycreative.movingpolygons.data.shape.ShapeColor;
 
-import android.graphics.Paint;
-
 public interface Colorable {
 	public void changeColors();
-	
+
 	public ShapeColor getColor();
 }
