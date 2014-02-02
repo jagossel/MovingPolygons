@@ -39,7 +39,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	<string name="color_change_type_title">Color Chaning Method</string>
 	<string name="color_change_type_summary">Specifics how the color should change.</string>
 
-	<string name="misc_category_title">Miscellenous</string>
+	<string name="misc_category_title">Miscellaneous</string>
 	<string name="speed_title">Speed</string>
 	<string name="speed_summary">Specifics how fast the polygons should move (delta).</string>
 </resources>
