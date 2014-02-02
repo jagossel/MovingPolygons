@@ -52,6 +52,9 @@ public class Polygon implements Shapable {
 				.argb(alpha, color.red, color.green, color.blue));
 	}
 
+	// TODO: Fix the uneven spacing when changing delta direction.
+	// There is a point to where if the speed does not equal the spacing, then
+	// the even spacing is lost after the direction has changed.
 	@Override
 	public void movePoints() {
 		List<DeltaPoint> points = polygon.getPoints();

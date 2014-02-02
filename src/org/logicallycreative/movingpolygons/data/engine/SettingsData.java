@@ -15,7 +15,6 @@
 //along with this program.  If not, see <http://www.gnu.org/licenses/>.
 package org.logicallycreative.movingpolygons.data.engine;
 
-import org.logicallycreative.movingpolygons.common.ColoringMethods;
 import org.logicallycreative.movingpolygons.common.DefaultSettings;
 import org.logicallycreative.movingpolygons.common.SettingNames;
 import org.logicallycreative.movingpolygons.util.RandomNumberUtility;
@@ -31,6 +30,7 @@ public class SettingsData {
 	private final int echoCount;
 	private final int echoSpacing;
 	private final String coloringMethod;
+	private final int polygonSpeed;
 
 	public SettingsData(SharedPreferences settings) {
 		addEchoes = settings.getBoolean(SettingNames.addEchoes,
@@ -64,7 +64,10 @@ public class SettingsData {
 		}
 
 		coloringMethod = settings.getString(SettingNames.coloringMethod,
-				ColoringMethods.Sine);
+				DefaultSettings.coloringMethod);
+
+		polygonSpeed = settings.getInt(SettingNames.polygonSpeed,
+				DefaultSettings.polygonSpeed);
 	}
 
 	public boolean getAddEchoes() {
@@ -101,6 +104,10 @@ public class SettingsData {
 
 	public String getColoringMethod() {
 		return coloringMethod;
+	}
+
+	public int getPolygonSpeed() {
+		return polygonSpeed;
 	}
 
 	public int getMinimumColorValue() {

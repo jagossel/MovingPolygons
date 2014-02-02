@@ -64,8 +64,10 @@ public class Echoes implements Shapable {
 			int offsetXCoordinate = baseXCoordinate + coordinateOffset;
 			int offsetYCoordinate = baseYCoordinate + coordinateOffset;
 
+			int polygonSpeed = EngineData.settings.getPolygonSpeed();
+
 			offsetPoints.add(new DeltaPoint(offsetXCoordinate,
-					offsetYCoordinate, 1, 1));
+					offsetYCoordinate, polygonSpeed, polygonSpeed));
 		}
 
 		polygon.addPoints(offsetPoints);

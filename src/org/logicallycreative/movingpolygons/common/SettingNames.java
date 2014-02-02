@@ -24,4 +24,5 @@ public class SettingNames {
 	public static final String echoCount = "echo_count";
 	public static final String echoSpacing = "echo_spacing";
 	public static final String coloringMethod = "color_change_method";
+	public static final String polygonSpeed = "polygon_speed";
 }

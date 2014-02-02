@@ -23,4 +23,6 @@ public class DefaultSettings {
 	public static final int echoCount = 5;
 	public static final boolean setEchoSpacing = false;
 	public static final int echoSpacing = 5;
+	public static final String coloringMethod = ColoringMethods.Sine;
+	public static final int polygonSpeed = 1;
 }
