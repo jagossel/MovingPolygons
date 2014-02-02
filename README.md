@@ -5,8 +5,11 @@ A simple Live Wallpaper with a series of lines that have points bouncing off of 
 
 It originally started off as an inspiration to create a basic screen saver using QBasic, then I thought about how to implement it as live wallpaper for Andoid.
 
-TODOs
------
-1. Some rafctoring in the code to make it more testable.
-2. Add in an option to set the delay between frames.
-3. Consider adding in the option to set the minimum and maximum color values.
+TODOs or Nice To Haves
+----------------------
+The following items needs work (order from highest to lowest priority):
+1. Fix the uneven echo spacing issue when changing the point direction.
+2. Consider adding in the option to set the minimum and maximum color values.
+3. Find a way to preserve the polygon(s) when the screen surface dimensions change (instead of creating new polygon(s)).
+4. Some refactoring in the code to make it more testable.
+5. Add unit tests to ensure the engine is working as it should.
