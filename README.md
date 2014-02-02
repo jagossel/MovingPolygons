@@ -8,6 +8,7 @@ It originally started off as an inspiration to create a basic screen saver using
 TODOs or Nice To Haves
 ----------------------
 The following items needs work (order from highest to lowest priority):
+
 1. Fix the uneven echo spacing issue when changing the point direction.
 2. Consider adding in the option to set the minimum and maximum color values.
 3. Find a way to preserve the polygon(s) when the screen surface dimensions change (instead of creating new polygon(s)).
