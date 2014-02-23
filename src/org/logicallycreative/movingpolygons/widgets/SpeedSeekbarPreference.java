@@ -9,6 +9,8 @@ import android.content.SharedPreferences.Editor;
 import android.util.AttributeSet;
 
 public class SpeedSeekbarPreference extends SeekBarPreference {
+	private final int minimum = 1;
+	private final int maximum = 10;
 
 	public SpeedSeekbarPreference(Context context, AttributeSet attrs) {
 		super(context, attrs);
@@ -16,12 +18,12 @@ public class SpeedSeekbarPreference extends SeekBarPreference {
 
 	@Override
 	protected int getMinimumValue() {
-		return 1;
+		return minimum;
 	}
 
 	@Override
 	protected int getMaximumValue() {
-		return 10;
+		return maximum;
 	}
 
 	@Override
