@@ -71,4 +71,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 			android:title="@string/speed_title"
 			android:summary="@string/speed_summary" /-->
 	<!--/PreferenceCategory-->
+	<PreferenceCategory
+		android:title="@string/legal_category_title">
+		<org.logicallycreative.movingpolygons.widgets.AboutPreference
+			android:title="@string/about_title"
+			android:summary="@string/about_summary" />
+	</PreferenceCategory>
 </PreferenceScreen>

@@ -40,6 +40,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	<string name="color_change_type_summary">Specifics how the color should change.</string>
 
 	<string name="misc_category_title">Miscellaneous</string>
-	<string name="speed_title">Speed</string>
-	<string name="speed_summary">Specifics how fast the polygons should move (delta).</string>
+	<string name="speed_title">Speed Factor</string>
+	<string name="speed_summary">Specifics how fast the polygons should move.</string>
+
+	<string name="legal_category_title">Legal</string>
+	<string name="about_title">About</string>
+	<string name="about_summary">About This App and Legal Information</string>
+
+	<!-- Legal -->
+	<string name="about_text">Moving Polygons Live Wallpaper&#10;Copyright (C) 2014, LogicallyCreative.org&#10;&#10;This program comes with ABSOLUTELY NO WARRANTY; for details visit http://www.gnu.org/licenses/. This is free software, and you are welcome to redistribute it under certain conditions; for details visit http://www.gnu.org/licenses/.</string>
 </resources>
