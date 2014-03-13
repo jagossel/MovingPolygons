@@ -64,11 +64,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 			android:entries="@array/color_changing_method_list_names"
 			android:entryValues="@array/color_changing_method_list_value" />
 	</PreferenceCategory>
-	<PreferenceCategory
-		android:title="@string/misc_category_title">
-		<org.logicallycreative.movingpolygons.widgets.SpeedSeekbarPreference
+	<!--PreferenceCategory
+		android:title="@string/misc_category_title"-->
+		<!--org.logicallycreative.movingpolygons.widgets.SpeedSeekbarPreference
 			android:key="polygon_speed"
 			android:title="@string/speed_title"
-			android:summary="@string/speed_summary" />
-	</PreferenceCategory>
+			android:summary="@string/speed_summary" /-->
+	<!--/PreferenceCategory-->
 </PreferenceScreen>

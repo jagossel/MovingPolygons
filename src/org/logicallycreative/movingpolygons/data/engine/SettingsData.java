@@ -66,8 +66,8 @@ public class SettingsData {
 		coloringMethod = settings.getString(SettingNames.coloringMethod,
 				DefaultSettings.coloringMethod);
 
-		polygonSpeed = settings.getInt(SettingNames.polygonSpeed,
-				DefaultSettings.polygonSpeed);
+		//polygonSpeed = settings.getInt(SettingNames.polygonSpeed, DefaultSettings.polygonSpeed);
+		polygonSpeed = 1;
 	}
 
 	public boolean getAddEchoes() {
