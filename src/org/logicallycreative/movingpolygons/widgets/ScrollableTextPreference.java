@@ -17,6 +17,7 @@ package org.logicallycreative.movingpolygons.widgets;
 
 import org.logicallycreative.movingpolygons.R;
 
+import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.preference.DialogPreference;
 import android.util.AttributeSet;
@@ -32,19 +33,22 @@ public abstract class ScrollableTextPreference extends DialogPreference {
 	}
 
 	@Override
-	protected void onBindDialogView(View view)
-	{
+	protected void onPrepareDialogBuilder(Builder builder) {
+		super.onPrepareDialogBuilder(builder);
+		builder.setNegativeButton(null, null);
+	}
+
+	@Override
+	protected void onBindDialogView(View view) {
 		super.onBindDialogView(view);
 		
 		setupScrollableView(view);
 	}
 	
-	protected abstract String getDialogText();
+	protected abstract void setDialogText(TextView textView);
 	
 	private void setupScrollableView(View view) {
 		TextView textView = (TextView)view.findViewById(R.id.scrollTextView);
-		String text = getDialogText();
-		
-		textView.setText(text);
+		setDialogText(textView);
 	}
 }

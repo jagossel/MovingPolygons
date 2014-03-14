@@ -18,7 +18,13 @@ package org.logicallycreative.movingpolygons.widgets;
 import org.logicallycreative.movingpolygons.R;
 
 import android.content.Context;
+import android.text.SpannableString;
+import android.text.method.LinkMovementMethod;
+import android.text.style.RelativeSizeSpan;
+import android.text.style.URLSpan;
 import android.util.AttributeSet;
+import android.widget.TextView;
+import android.widget.TextView.BufferType;
 
 public class AboutPreference extends ScrollableTextPreference {
 	public AboutPreference(Context context, AttributeSet attrSet) {
@@ -26,7 +32,46 @@ public class AboutPreference extends ScrollableTextPreference {
 	}
 	
 	@Override
-	protected String getDialogText() {
-		return super.getContext().getString(R.string.about_text);
+	protected void setDialogText(TextView textView) {
+		final String spanTextFormat = "%s\n%s\n\n%s\n\n%s %s";
+		Context context = super.getContext();
+		
+		String appName = context.getString(R.string.app_name);
+		int appNameLength = appName.length();
+		int appNameStart = 0;
+		int appNameStop = appNameStart + appNameLength;
+		
+		String copyright = context.getString(R.string.copyright_line);
+		int copyrightLength = copyright.length();
+		int copyrightStart = appNameStop + 1;
+		int copyrightStop = copyrightStart + copyrightLength;
+		
+		String licenseText = context.getString(R.string.brief_legal_text);
+		int licenseTextLength = licenseText.length();
+		int licenseTextStart = copyrightStop + 2;
+		int licenseTextStop = licenseTextStart + licenseTextLength;
+		
+		String licenseLinkLabel = context.getString(R.string.license_link_label);
+		int licenseLinkLabelLength = licenseLinkLabel.length();
+		int licenseLinkLabelStart = licenseTextStop + 2;
+		int licenseLinkLabelStop = licenseLinkLabelStart + licenseLinkLabelLength;
+		
+		String licenseLink = context.getString(R.string.license_link);
+		int licenseLinkLength = licenseLink.length();
+		int licenseLinkStart = licenseLinkLabelStop + 1;
+		int licenseLinkStop = licenseLinkStart + licenseLinkLength;
+		
+		String spanText = String.format(spanTextFormat,
+			appName, copyright, licenseText, licenseLinkLabel, licenseLink);
+			
+		SpannableString spannableText = new SpannableString(spanText);
+		spannableText.setSpan(new RelativeSizeSpan(1.25f), appNameStart, appNameStop, 0);
+		spannableText.setSpan(new RelativeSizeSpan(1.25f), copyrightStart, copyrightStop, 0);
+		spannableText.setSpan(new RelativeSizeSpan(1f), licenseTextStart, licenseTextStop, 0);
+		spannableText.setSpan(new RelativeSizeSpan(1f), licenseLinkLabelStart, licenseLinkLabelStop, 0);
+		spannableText.setSpan(new URLSpan(licenseLink), licenseLinkStart, licenseLinkStop, 0);
+		
+		textView.setMovementMethod(LinkMovementMethod.getInstance());
+		textView.setText(spannableText, BufferType.SPANNABLE);
 	}
 }

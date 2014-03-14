@@ -23,6 +23,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	<TextView
 		android:id="@+id/scrollTextView"
 		android:layout_width="fill_parent"
-		android:layout_height="wrap_content" />
+		android:layout_height="wrap_content"
+		android:padding="10dp" />
 
 </ScrollView>

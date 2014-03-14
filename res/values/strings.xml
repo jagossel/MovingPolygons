@@ -48,5 +48,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	<string name="about_summary">About This App and Legal Information</string>
 
 	<!-- Legal -->
-	<string name="about_text">Moving Polygons Live Wallpaper&#10;Copyright (C) 2014, LogicallyCreative.org&#10;&#10;This program comes with ABSOLUTELY NO WARRANTY; for details visit http://www.gnu.org/licenses/. This is free software, and you are welcome to redistribute it under certain conditions; for details visit http://www.gnu.org/licenses/.</string>
+	<string name="copyright_line">Copyright (C) 2014, LogicallyCreative.org</string>
+	<string name="brief_legal_text">This program comes with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to redistribute it under certain conditions.</string>
+	<string name="license_link_label">For more information, please visit:</string>
+	<string name="license_link">http://www.gnu.org/licenses/gpl.html</string>
 </resources>
