@@ -22,7 +22,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 			android:key="specify_point_count"
 			android:title="@string/set_point_count_title"
 			android:defaultValue="false" />
-		<org.logicallycreative.movingpolygons.widgets.PointCountSeekbarPreference
+		<org.logicallycreative.mplw.widgets.PointCountSeekbarPreference
 			android:key="polygon_point_count"
 			android:title="@string/point_count_title"
 			android:summary="@string/point_count_summary"
@@ -39,7 +39,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 			android:title="@string/set_echo_count_title"
 			android:dependency="add_echoes"
 			android:defaultValue="false" />
-		<org.logicallycreative.movingpolygons.widgets.EchoCountSeekbarPreference
+		<org.logicallycreative.mplw.widgets.EchoCountSeekbarPreference
 			android:key="echo_count"
 			android:title="@string/echo_count_title"
 			android:summary="@string/echo_count_summary"
@@ -49,7 +49,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 			android:title="@string/set_echo_spacing_title"
 			android:dependency="add_echoes"
 			android:defaultValue="false" />
-		<org.logicallycreative.movingpolygons.widgets.EchoSpacingSeekbarPreference
+		<org.logicallycreative.mplw.widgets.EchoSpacingSeekbarPreference
 			android:key="echo_spacing"
 			android:title="@string/echo_spacing_title"
 			android:summary="@string/echo_spacing_summary"
@@ -66,14 +66,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	</PreferenceCategory>
 	<!--PreferenceCategory
 		android:title="@string/misc_category_title"-->
-		<!--org.logicallycreative.movingpolygons.widgets.SpeedSeekbarPreference
+		<!--org.logicallycreative.mplw.widgets.SpeedSeekbarPreference
 			android:key="polygon_speed"
 			android:title="@string/speed_title"
 			android:summary="@string/speed_summary" /-->
 	<!--/PreferenceCategory-->
 	<PreferenceCategory
 		android:title="@string/legal_category_title">
-		<org.logicallycreative.movingpolygons.widgets.AboutPreference
+		<org.logicallycreative.mplw.widgets.AboutPreference
 			android:title="@string/about_title"
 			android:summary="@string/about_summary" />
 	</PreferenceCategory>
