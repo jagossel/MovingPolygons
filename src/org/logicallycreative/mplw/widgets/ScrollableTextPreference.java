@@ -15,7 +15,7 @@
 //along with this program.  If not, see <http://www.gnu.org/licenses/>.
 package org.logicallycreative.mplw.widgets;
 
-import org.logicallycreative.movingpolygons.R;
+import org.logicallycreative.mplw.R;
 
 import android.app.AlertDialog.Builder;
 import android.content.Context;
