@@ -19,7 +19,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.logicallycreative.mplw"
     android:versionCode="7"
-    android:versionName="1.0.0.6.1">
+    android:versionName="1.0.0.6">
 
     <uses-sdk
         android:minSdkVersion="8"
