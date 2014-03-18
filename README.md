@@ -17,4 +17,4 @@ The following items needs work (order from highest to lowest priority):
 
 NOTICE
 ------
-This live wallpaper has not been offically published onto Google Play; therefore, be aware of the same application published on Google Play being sold for $0.99 USD (which is violating the GNU General Public License v3 by not providing the source code nor given attribution).  This live wallpaper was intended to be free (as in speech and lunch).
+This live wallpaper was intended to be free (as in speech and lunch).  If it was paid for, please uninstall it and search for LogicallyCreative.org to get the original (and free) copy.
