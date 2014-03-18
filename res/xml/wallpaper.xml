@@ -17,4 +17,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 -->
 <wallpaper xmlns:android="http://schemas.android.com/apk/res/android"
 	android:thumbnail="@drawable/ic_launcher"
-	android:settingsActivity="org.logicallycreative.movingpolygons.PreferencesActivity" />
+	android:settingsActivity="org.logicallycreative.mplw.PreferencesActivity" />
