@@ -78,15 +78,12 @@ public class EngineLoader {
 		int maximumX = EngineData.screenWidth - echoDifference;
 		int maximumY = EngineData.screenHeight - echoDifference;
 
-		int polygonSpeed = EngineData.settings.getPolygonSpeed();
-
 		int numberOfSides = settings.getPointCount();
 		for (int i = 0; i < numberOfSides; i++) {
 			int x = RandomNumberUtility.getRandomInteger(minimumX, maximumX);
 			int y = RandomNumberUtility.getRandomInteger(minimumY, maximumY);
 
-			startingPoints
-					.add(new DeltaPoint(x, y, polygonSpeed, polygonSpeed));
+			startingPoints.add(new DeltaPoint(x, y, 1, 1));
 		}
 
 		return startingPoints;

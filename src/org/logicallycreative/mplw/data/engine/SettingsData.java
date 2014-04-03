@@ -30,7 +30,6 @@ public class SettingsData {
 	private final int echoCount;
 	private final int echoSpacing;
 	private final String coloringMethod;
-	private final int polygonSpeed;
 
 	public SettingsData(SharedPreferences settings) {
 		addEchoes = settings.getBoolean(SettingNames.addEchoes,
@@ -65,9 +64,6 @@ public class SettingsData {
 
 		coloringMethod = settings.getString(SettingNames.coloringMethod,
 				DefaultSettings.coloringMethod);
-
-		//polygonSpeed = settings.getInt(SettingNames.polygonSpeed, DefaultSettings.polygonSpeed);
-		polygonSpeed = 1;
 	}
 
 	public boolean getAddEchoes() {
@@ -104,10 +100,6 @@ public class SettingsData {
 
 	public String getColoringMethod() {
 		return coloringMethod;
-	}
-
-	public int getPolygonSpeed() {
-		return polygonSpeed;
 	}
 
 	public int getMinimumColorValue() {
