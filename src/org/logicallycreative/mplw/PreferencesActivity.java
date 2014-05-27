@@ -24,6 +24,7 @@ import android.preference.PreferenceManager;
 
 public class PreferencesActivity extends PreferenceActivity implements
 		SharedPreferences.OnSharedPreferenceChangeListener {
+	@SuppressWarnings("deprecation")
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -37,6 +38,7 @@ public class PreferencesActivity extends PreferenceActivity implements
 		addPreferencesFromResource(R.xml.preferences);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void onDestroy() {
 		getPreferenceManager().getSharedPreferences()
