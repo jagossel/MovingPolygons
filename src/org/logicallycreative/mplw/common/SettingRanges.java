@@ -13,19 +13,13 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
-package org.logicallycreative.mplw.data.shape;
+package org.logicallycreative.mplw.common;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class Shape {
-	private final List<DeltaPoint> points = new ArrayList<DeltaPoint>();
-
-	public void addPoint(DeltaPoint newPoint) {
-		points.add(newPoint);
-	}
-
-	public List<DeltaPoint> getPoints() {
-		return points;
-	}
+public class SettingRanges {
+	public static final int minimumPointCount = 3;
+	public static final int maximumPointCount = 8;
+	public static final int minimumEchoCount = 3;
+	public static final int maximumEchoCount = 10;
+	public static final int minimumEchoSpacing = 5;
+	public static final int maximumEchoSpacing = 10;
 }
