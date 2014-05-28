@@ -33,22 +33,22 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	<string name="echo_count_summary">Specifies the number of echoes.</string>
 	<string name="set_echo_spacing_title">Set Echo Spacing</string>
 	<string name="echo_spacing_title">Echo Spacing</string>
-	<string name="echo_spacing_summary">Specifies the speacing between echoes.</string>
+	<string name="echo_spacing_summary">Specifies the spacing between echoes.</string>
 
 	<string name="color_category_title">Color</string>
 	<string name="color_change_type_title">Color Chaning Method</string>
-	<string name="color_change_type_summary">Specifics how the color should change.</string>
+	<string name="color_change_type_summary">Specifies how the color should change.</string>
 
 	<string name="misc_category_title">Miscellaneous</string>
 	<string name="speed_title">Speed Factor</string>
-	<string name="speed_summary">Specifics how fast the polygons should move.</string>
+	<string name="speed_summary">Specifies how fast the polygons should move.</string>
 
 	<string name="legal_category_title">Legal</string>
 	<string name="about_title">About</string>
-	<string name="about_summary">About This App and Legal Information</string>
+	<string name="about_summary">About this app and legal information.</string>
 
 	<!-- Legal -->
-	<string name="copyright_line">Copyright (C) 2014, LogicallyCreative.org</string>
+	<string name="copyright_line">Copyright &#169; 2014, LogicallyCreative.org</string>
 	<string name="brief_legal_text">This program comes with ABSOLUTELY NO WARRANTY. This is free software, and you are welcome to redistribute it under certain conditions.</string>
 	<string name="license_link_label">For more information, please visit:</string>
 	<string name="license_link">http://www.gnu.org/licenses/gpl.html</string>
