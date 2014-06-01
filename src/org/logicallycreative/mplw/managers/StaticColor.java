@@ -13,19 +13,19 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
-package org.logicallycreative.mplw.data.shape;
+package org.logicallycreative.mplw.managers;
 
-import java.util.ArrayList;
-import java.util.List;
+public class StaticColor extends ColorManager {
 
-public class Shape {
-	private final List<DeltaPoint> points = new ArrayList<DeltaPoint>();
+	public StaticColor(int minimumColorValue, int maximumColorValue) {
+		super(minimumColorValue, maximumColorValue);
 
-	public void addPoint(DeltaPoint newPoint) {
-		points.add(newPoint);
+		super.setRandomColorValues();
 	}
 
-	public List<DeltaPoint> getPoints() {
-		return points;
+	@Override
+	public void changeColors() {
+		// Static color, do not change the colors.
 	}
+
 }

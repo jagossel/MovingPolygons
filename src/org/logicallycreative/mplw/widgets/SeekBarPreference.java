@@ -1,18 +1,18 @@
-//Moving Polygons Live Wallpaper
-//Copyright (C) 2013  LogicallyCreative.org
+// Moving Polygons Live Wallpaper
+// Copyright (C) 2013 LogicallyCreative.org
 //
-//This program is free software: you can redistribute it and/or modify
-//it under the terms of the GNU General Public License as published by
-//the Free Software Foundation, either version 3 of the License, or
-//(at your option) any later version.
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
 //
-//This program is distributed in the hope that it will be useful,
-//but WITHOUT ANY WARRANTY; without even the implied warranty of
-//MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//GNU General Public License for more details.
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// GNU General Public License for more details.
 //
-//You should have received a copy of the GNU General Public License
-//along with this program.  If not, see <http://www.gnu.org/licenses/>.
+// You should have received a copy of the GNU General Public License
+// along with this program. If not, see <http://www.gnu.org/licenses/>.
 package org.logicallycreative.mplw.widgets;
 
 import org.logicallycreative.mplw.R;
@@ -25,7 +25,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 // TODO: Find a better way to make this class re-usable.
-// I am not a fan of having sub-classes based off of this.  If there is a better way of
+// I am not a fan of having sub-classes based off of this. If there is a better way of
 // doing this without having to have sub-classes for each settings, then by all means,
 // do it.
 public abstract class SeekBarPreference extends DialogPreference {
@@ -94,8 +94,7 @@ public abstract class SeekBarPreference extends DialogPreference {
 	private void setupSeekbarListeners() {
 		SeekBar.OnSeekBarChangeListener listener = new SeekBar.OnSeekBarChangeListener() {
 			@Override
-			public void onProgressChanged(SeekBar seekBar, int progress,
-					boolean fromUser) {
+			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 				int currentValue = progress + minimum;
 
 				preferenceValue = currentValue;
@@ -103,12 +102,10 @@ public abstract class SeekBarPreference extends DialogPreference {
 			}
 
 			@Override
-			public void onStartTrackingTouch(SeekBar seekBar) {
-			}
+			public void onStartTrackingTouch(SeekBar seekBar) {}
 
 			@Override
-			public void onStopTrackingTouch(SeekBar seekBar) {
-			}
+			public void onStopTrackingTouch(SeekBar seekBar) {}
 		};
 
 		preferenceSeekbar.setOnSeekBarChangeListener(listener);
