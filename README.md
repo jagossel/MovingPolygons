@@ -12,8 +12,7 @@ The following items needs work (order from highest to lowest priority):
 1. Fix the uneven echo spacing issue when changing the point direction.
 2. Consider adding in the option to set the minimum and maximum color values.
 3. Find a way to preserve the polygon(s) when the screen surface dimensions change (instead of creating new polygon(s)).
-4. Some refactoring in the code to make it more testable.
-5. Add unit tests to ensure the engine is working as it should.
+4. Add unit tests to ensure the engine is working as it should.
 
 NOTICE
 ------
